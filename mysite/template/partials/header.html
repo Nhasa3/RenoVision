@@ -1,9 +1,16 @@
-<div class="intro">
-    <img src="static/resources/intro.jpg">
-            <h1 class="title">RenoVision</h1>
+{% load static %}
 
-            <!--Display contact information-->
-            <div class="contact_info">
-            <p>Contact info</p>
-            </div>
+<header>
+<div class="header">
+    <div class="logo">
+        <img src="{% static 'resources:logo.jpg'%}" alt="RenoVision Logo" class="header-logo">
+    </div>
+        <!--Navigation-->
+        <div class="route">
+            <a href="{%url 'web:index' %}" class="btn-primary">Home</a>
+            <a href="{%url 'web:services' %}" class="btn-primary">Services</a>
+            <a href="{%url 'web:about' %}" class="btn-primary">About</a>
+        </div>
+
 </div>
+</header>
