@@ -1,0 +1,41 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 1rem 2rem;   /* reduced padding */
+    box-sizing: border-box;
+
+    background: rgba(30, 58, 95, 0.5);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.route {
+    display: flex;
+    gap: 2rem;
+}
+
+.route a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.route a:hover {
+    color: #f97316;
+}
