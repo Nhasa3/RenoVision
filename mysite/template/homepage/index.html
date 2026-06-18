@@ -4,55 +4,59 @@
     <head>
         <Title>RenoVision</Title>
         <link rel="stylesheet" href="{% static 'css/header.css' %}">
+        <link rel="stylesheet" href="{% static 'css/index.css' %}">
 
     </head>
 
     <body>
         {% include "../partials/header.html" %}
 
+        <div class="intro">
+            <img src="{% static 'resources/h-bg.jpg' %}" class="intro-bg" >
+            <h1>RenoVision</h1>
         </div>
 
         <!--Display services (Basement)-->
         <a href="#">
-        <div class="basement">
-
+        <div class="intro">
+            <img src="{% static 'resources/basement.jpg' %}" class="intro-bg">
+            <h1>Basement</h1>
         </div>
         </a>
 
         <!--Display services (Kitchen)-->
         <a href="#">
-        <div class="kitchen">
-
+        <div class="intro">
+            <img src="{% static 'resources/kitchen.jpg' %}" class="intro-bg">
+            <h1>Kitchen</h1>
         </div>
         </a>
 
         <!--Display services (Toilets)-->
         <a href="#">
-        <div class="toilets">
-
+        <div class="intro">
+            <img src="{% static 'resources/toilet.jpg' %}" class="intro-bg">
+            <h1>Toilet</h1>
         </div>
         </a>
 
         <!--Display services (TV)-->
         <a href="#">
-        <div class="TV">
-
+        <div class="intro">
+            <img src="{% static 'resources/tv.jpg' %}" class="intro-bg">
+            <h1>TV Wall</h1>
         </div>
         </a>
 
-        <!--Display services (Salon)-->
+        <!--Display services (Interlock)-->
         <a href="#">
-        <div class="Salon">
-
+        <div class="intro">
+            <img src="{% static 'resources/interlock.jpg' %}" class="intro-bg">
+            <h1>Interlock</h1>
         </div>
         </a>
 
-        <!--Display services (outdoor)-->
-        <a href="#">
-        <div class="outdoor">
-
-        </div>
-        </a>
-
+        {% include "../partials/footer.html" %}
     </body>
+
 </html>
