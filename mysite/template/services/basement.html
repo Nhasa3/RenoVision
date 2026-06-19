@@ -4,12 +4,44 @@
     <head>
         <title>Basement</title>
         <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    
+        <style>
+
+#slideshow {
+    width: 100%;
+    height: 500px;
+}
+
+#slideshow img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+        </style>
     </head>
     <body>
         {% include "../partials/header.html" %}
 
+            <div id="slideshow">
+                <img id="slideImage" src="{% static 'resources/basement.jpg' %}">
+            </div>
 
+        <button onclick="nextPhoto()">nextPhoto</button>
 
+        <script>
+            const images = [
+            "{% static 'resources/basement.jpg' %}",
+            "{% static 'resources/kitchen.jpg' %}",
+            "{% static 'resources/tv.jpg' %}"
+            ];
+
+            let current = 0;
+
+            function nextPhoto(){
+                current = (current + 1) % images.length;
+                document.getElementById("slideImage").src = images[current];
+            }
+        </script>
 
 
     </body>
