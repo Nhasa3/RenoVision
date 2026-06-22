@@ -1,0 +1,21 @@
+<div class="form-container">
+    <form method="post" enctype="multipart/form-data">
+        {%csrf token%}
+    <div class="form-group">
+        <label id="fullname">fullname</label>
+        <input type="text" id="fullname" name="fullname" class="form-control" placeholder="Enter full name here" required>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" class="form-control" placeholder="you@example.com" required>
+
+    </div>
+
+    <div class="form-group">
+        <label for="photo">File</label>
+        <input type="file" id="photo" name="photo" class="form-control" accept="image/*">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
