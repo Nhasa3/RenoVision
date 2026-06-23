@@ -21,3 +21,8 @@ def basement(request):
 
 def kitchen(request):
     return render(request, 'services/kitchen.html')
+
+def bathroom(request):
+    return render(request, 'services/bathroom.html')
+def tv(request):
+    return render(request, 'services/tv.html')
