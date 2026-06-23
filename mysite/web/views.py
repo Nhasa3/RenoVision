@@ -24,3 +24,5 @@ def kitchen(request):
 
 def bathroom(request):
     return render(request, 'services/bathroom.html')
+def tv(request):
+    return render(request, 'services/tv.html')
