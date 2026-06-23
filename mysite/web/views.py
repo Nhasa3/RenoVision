@@ -18,3 +18,6 @@ def services(request):
 
 def basement(request):
     return render(request, 'services/basement.html')
+
+def kitchen(request):
+    return render(request, 'services/kitchen.html')
