@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -52,7 +53,7 @@
         {% include "../partials/header.html" %}
 
         <div id="slideshow">
-            <img src="{% static 'resources/basement.jpg' %}">
+            <img id="slideImage" src="{% static 'resources/basement.jpg' %}">
             <button class="next-arrow" onclick="nextPhoto()">></button>
         </div>
 
@@ -70,15 +71,16 @@
 
         <script>
             const images = [
-                "{% static 'resources/basement.jpg' %}",
+            "{% static 'resources/basement.jpg' %}",
             "{% static 'resources/kitchen.jpg' %}",
-            "{% static 'resources/tv.jpg' %}"];
+            "{% static 'resources/tv.jpg' %}"
+            ];
 
             let current = 0;
 
             function nextPhoto(){
                 current = (current + 1) % images.length;
-                document.getElementById("slideshow").src = images[current];
+                document.getElementById("slideImage").src = images[current];
             }
             setInterval(nextPhoto, 4000);
         </script>
