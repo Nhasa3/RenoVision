@@ -10,7 +10,7 @@ def index(request):
     
     
 def about(request):
-    return render(request, 'About/about.html')
+    return render(request, 'about/about.html')
 
 def services(request):
     return render(request, 'services/service.html')
