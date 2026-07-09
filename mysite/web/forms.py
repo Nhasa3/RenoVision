@@ -23,7 +23,7 @@ class QuoteRequestForm(forms.ModelForm):
         
     def clean_full_name(self):
         name = self.cleaned_data.get("full_name", "").strip()
-        if len(name) > 2:
+        if len(name) < 2:
             raise ValidationError("Please enter your full name.")
         if not re.match(r"^[A-Za-z\s'\-\.]+$", name):
             raise ValidationError("Name contains invlide characters.")
@@ -31,6 +31,12 @@ class QuoteRequestForm(forms.ModelForm):
     
     def clean_phone(self):
         phone = self.cleaned_data.get("phone", "").strip()
+        
+    # Reject if it contains anything other than digits, spaces, and standard phone punctuation
+        if not re.match(r"^[\d\s\-\(\)\+\.]+$", phone):
+            raise ValidationError(
+                "Phone number can only contain digits and standard formatting (e.g. dashes, parentheses)."
+            )
         digits = re.sub(r"\D", "", phone)
         if len(digits) < 10 or len(digits) > 11:
             raise ValidationError("Enter a valid phone number, e.g. (555) 123-4567.")
