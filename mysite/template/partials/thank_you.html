@@ -1,6 +1,153 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
-    <body>
-        <h1>Thank you</h1>
-    </body>
+<head>
+    <title>Thank You - RenoVision</title>
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <style>
+        .confirmation-container {
+            max-width: 700px;
+            margin: 60px auto;
+            padding: 40px;
+            text-align: center;
+            font-family: inherit;
+        }
+
+        .checkmark-circle {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            border-radius: 50%;
+            background: #2e7d32;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .checkmark-circle svg {
+            width: 40px;
+            height: 40px;
+            stroke: white;
+        }
+
+        .confirmation-container h1 {
+            font-size: 28px;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        .confirmation-container p {
+            font-size: 16px;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        .next-steps {
+            text-align: left;
+            background: #f7f7f7;
+            border-radius: 8px;
+            padding: 24px 32px;
+            margin: 32px 0;
+        }
+
+        .next-steps h2 {
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .next-steps ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .next-steps li {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .contact-fallback {
+            font-size: 14px;
+            color: #666;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid #ddd;
+        }
+
+        .contact-fallback a {
+            color: #2e7d32;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .action-buttons {
+            margin-top: 32px;
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .btn-primary {
+            background: #2e7d32;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #2e7d32;
+            border: 2px solid #2e7d32;
+        }
+    </style>
+</head>
+<body>
+    {% include "../partials/header.html" %}
+
+    <div class="confirmation-container">
+        <div class="checkmark-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+        </div>
+
+        <h1>Thank You for Your Request!</h1>
+        <p>
+            We've received your renovation quote request and our team will review the details. 
+            A member of our team will be in touch shortly to discuss your project.
+        </p>
+
+        <div class="next-steps">
+            <h2>What Happens Next</h2>
+            <ol>
+                <li>Our team reviews your project details and photos (if provided) within 1 business day.</li>
+                <li>We'll reach out using your preferred contact method to ask any follow-up questions.</li>
+                <li>If needed, we'll schedule a free on-site visit to assess the project firsthand.</li>
+                <li>You'll receive a detailed, no-obligation quote for your renovation.</li>
+            </ol>
+        </div>
+
+        <p>
+            Most clients hear back from us within <strong>24–48 hours</strong>.
+            If your project is time-sensitive, feel free to call us directly.
+        </p>
+
+        <div class="action-buttons">
+            <a href="{% url 'web:index' %}" class="btn btn-primary">Back to Home</a>
+            <a href="{% url 'web:services' %}" class="btn btn-secondary">Explore Our Services</a>
+        </div>
+
+        <div class="contact-fallback">
+            Didn't mean to submit, or need to make changes? Contact us at
+            <a href="tel:+16135551234">(613) 555-1234</a> or
+            <a href="mailto:info@renovision.ca">info@renovision.ca</a>.
+        </div>
+    </div>
+</body>
 </html>
