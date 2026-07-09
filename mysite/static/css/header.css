@@ -8,11 +8,12 @@
     justify-content: space-between;
     align-items: center;
 
-    padding: 1rem 2rem;   /* reduced padding */
+    padding: 1rem 2rem;
     box-sizing: border-box;
 
     background: rgba(30, 58, 95, 0.5);
     backdrop-filter: blur(10px);
+
     z-index: 1000;
 }
 
@@ -24,9 +25,15 @@
     letter-spacing: 1px;
 }
 
+.header-logo {
+    height: 60px;
+    width: auto;
+}
+
 .route {
     display: flex;
     gap: 2rem;
+    align-items: center;
 }
 
 .route a {
@@ -38,4 +45,68 @@
 
 .route a:hover {
     color: #f97316;
+}
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+}
+
+/* Services button */
+.dropbtn {
+    background: none;
+    border: none;
+    color: white;
+    font-weight: 500;
+    font-size: inherit;
+    font-family: inherit;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 0;
+}
+
+.dropbtn:hover {
+    color: #f97316;
+}
+
+/* Hidden menu */
+.dropdown-content {
+    display: none;
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+
+
+    background: rgba(30, 58, 95, 0.5);
+    backdrop-filter: blur(10px);
+
+    border-radius: 8px;
+    overflow: hidden;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+    z-index: 2000;
+    margin-right: 100px;
+}
+
+/* Dropdown links */
+.dropdown-content a {
+    display: block;
+    padding: 12px 16px;
+
+    color: white;
+    text-decoration: none;
+
+    transition: background 0.3s ease,
+                color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background: rgba(249, 115, 22, 0.2);
+    color: #f97316;
+}
+
+/* Show menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
 }

@@ -1,7 +1,9 @@
 <div class="form-container">
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" action="{% url 'web:quote_request' %}" enctype="multipart/form-data">
         {% csrf_token %}
-
+        {% for message in messages %}
+            <p style="color:red; font-weight:bold;">{{ message }}</p>
+        {% endfor %}
         <h2>Request a Free Quote</h2>
         <p>
             Tell us about your renovation project and we'll contact you
@@ -10,15 +12,19 @@
 
         <!-- Contact Information -->
         <div class="form-group">
-            <label for="fullname">Full Name *</label>
+            <label for="full_name">Full Name *</label>
             <input
                 type="text"
-                id="fullname"
-                name="fullname"
+                id="full_name"
+                name="full_name"
                 class="form-control"
-                placeholder="John Smith"
+                placeholder="Joe Smith"
+                value="{{ form_data.full_name|default:'' }}"
                 required
             >
+            {% if form_errors.full_name %}
+                <p class="field-error" style="color:red;">{{ form_errors.full_name.0 }}</p>
+            {% endif %}
         </div>
 
         <div class="form-group">
@@ -29,8 +35,12 @@
                 name="phone"
                 class="form-control"
                 placeholder="(555) 123-4567"
+                value="{{ form_data.phone|default:'' }}"
                 required
             >
+            {% if form_errors.phone %}
+                <p class="field-error" style="color:red;">{{ form_errors.phone.0 }}</p>
+            {% endif %}
         </div>
 
         <div class="form-group">
@@ -40,7 +50,8 @@
                 id="email"
                 name="email"
                 class="form-control"
-                placeholder="john@example.com"
+                placeholder="Joe@gmail.com"
+                value="{{ form_data.email|default:'' }}"
                 required
             >
         </div>
@@ -54,6 +65,7 @@
                 name="address"
                 class="form-control"
                 placeholder="123 Main Street"
+                value="{{ form_data.address|default:'' }}"
                 required
             >
         </div>
@@ -66,6 +78,7 @@
                 name="city"
                 class="form-control"
                 placeholder="Ottawa"
+                value="{{ form_data.city|default:'' }}"
                 required
             >
         </div>
@@ -78,8 +91,12 @@
                 name="postal_code"
                 class="form-control"
                 placeholder="K1A 0A6"
+                value="{{ form_data.postal_code|default:'' }}"
                 required
             >
+            {% if form_errors.postal_code %}
+                <p class="field-error" style="color:red;">{{ form_errors.postal_code.0 }}</p>
+            {% endif %}
         </div>
 
         <!-- Project Details -->
@@ -89,6 +106,7 @@
                 id="project_type"
                 name="project_type"
                 class="form-control"
+                value="{{ form_data.project_type|default:'' }}"
                 required
             >
                 <option value="">Select a project type</option>
@@ -109,12 +127,16 @@
                 id="basement_status"
                 name="basement_status"
                 class="form-control"
+                value="{{ form_data.basement_status|default:'' }}"
             >
                 <option value="">Not Applicable</option>
                 <option>Unfinished Basement</option>
                 <option>Partially Finished Basement</option>
                 <option>Finished Basement Remodel</option>
             </select>
+            {% if form_errors.clean %}
+                <p class="field-error" style="color:red;">{{ form_errors.clean.0 }}</p>
+            {% endif %}
         </div>
 
         <div class="form-group">
@@ -123,6 +145,7 @@
                 id="budget"
                 name="budget"
                 class="form-control"
+                value="{{ form_data.budget|default:'' }}"
             >
                 <option value="">Select a budget range</option>
                 <option>Under $10,000</option>
@@ -139,6 +162,7 @@
                 id="timeline"
                 name="timeline"
                 class="form-control"
+                value="{{ form_data.timeline|default:'' }}"
             >
                 <option value="">Select a timeline</option>
                 <option>ASAP</option>
@@ -159,8 +183,14 @@
                 class="form-control"
                 rows="6"
                 placeholder="Please describe the renovation work you'd like completed..."
+                value="{{ form_data.description|default:'' }}"
                 required
-            ></textarea>
+            >
+        </textarea>
+            
+            {% if form_errors.description %}
+                <p class="field-error" style="color:red;">{{ form_errors.description.0 }}</p>
+            {% endif %}
         </div>
 
         <div class="form-group">
