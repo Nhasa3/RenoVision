@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import QuoteRequest, QuotePhoto
 from .forms import QuoteRequestForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -18,18 +19,43 @@ def services(request):
 
 
 def basement(request):
-    return render(request, 'services/basement.html')
-
+    form_errors = request.session.pop('quote_form_errors', None)
+    form_data = request.session.pop('quote_form_data', None)
+    return render(request, 'services/basement.html', {
+        'form_errors': form_errors,
+        'form_data': form_data,
+    })
+    
 def kitchen(request):
-    return render(request, 'services/kitchen.html')
-
+    form_errors = request.session.pop('quote_form_errors', None)
+    form_data = request.session.pop('quote_form_data', None)
+    return render(request, 'services/kitchen.html', {
+        'form_errors': form_errors,
+        'form_data': form_data,
+    })
 def bathroom(request):
-    return render(request, 'services/bathroom.html')
+    form_errors = request.session.pop('quote_form_errors', None)
+    form_data = request.session.pop('quote_form_data', None)
+    return render(request, 'services/bathroom.html', {
+        'form_errors': form_errors,
+        'form_data': form_data,
+    })
 def tv(request):
-    return render(request, 'services/tv.html')
+    form_errors = request.session.pop('quote_form_errors', None)
+    form_data = request.session.pop('quote_form_data', None)
+    return render(request, 'services/tv.html', {
+        'form_errors': form_errors,
+        'form_data': form_data,
+    })
+    
 def interlock(request):
-    return render(request, 'services/interlock.html')
-
+    form_errors = request.session.pop('quote_form_errors', None)
+    form_data = request.session.pop('quote_form_data', None)
+    return render(request, 'services/interlock.html', {
+        'form_errors': form_errors,
+        'form_data': form_data,
+    })
+    
 def quote_request(request):
     if request.method == "POST":
         form = QuoteRequestForm(request.POST)
@@ -38,9 +64,14 @@ def quote_request(request):
             for file in request.FILES.getlist('photos'):
                 QuotePhoto.objects.create(quote_request=quote, image=file)
             return redirect('web:thank_you')
-    else:
-        form = QuoteRequestForm()
-    return render(request, 'form.html', {'form': form})
+        else:
+            # Store field-specific errors and submitted values in the session
+            request.session['quote_form_errors'] = form.errors
+            request.session['quote_form_data'] = request.POST.dict()
+            messages.error(request, "Please correct the errors below and resubmit.")
+
+    referer = request.META.get('HTTP_REFERER')
+    return redirect(referer or 'web:index')
 
 def thank_you(request):
     return render(request, 'partials/thank_you.html')

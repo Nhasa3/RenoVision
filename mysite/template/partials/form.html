@@ -1,7 +1,9 @@
 <div class="form-container">
     <form method="post" action="{% url 'web:quote_request' %}" enctype="multipart/form-data">
         {% csrf_token %}
-
+        {% for message in messages %}
+            <p style="color:red; font-weight:bold;">{{ message }}</p>
+        {% endfor %}
         <h2>Request a Free Quote</h2>
         <p>
             Tell us about your renovation project and we'll contact you
@@ -19,6 +21,9 @@
                 placeholder="John Smith"
                 required
             >
+            {% if form_errors.full_name %}
+                <p class="field-error" style="color:red;">{{ form_errors.full_name.0 }}</p>
+            {% endif %}
         </div>
 
         <div class="form-group">
@@ -31,6 +36,9 @@
                 placeholder="(555) 123-4567"
                 required
             >
+            {% if form_errors.phone %}
+                <p class="field-error" style="color:red;">{{ form_errors.phone.0 }}</p>
+            {% endif %}
         </div>
 
         <div class="form-group">
@@ -80,6 +88,9 @@
                 placeholder="K1A 0A6"
                 required
             >
+            {% if form_errors.postal_code %}
+                <p class="field-error" style="color:red;">{{ form_errors.postal_code.0 }}</p>
+            {% endif %}
         </div>
 
         <!-- Project Details -->
@@ -115,6 +126,9 @@
                 <option>Partially Finished Basement</option>
                 <option>Finished Basement Remodel</option>
             </select>
+            {% if form_errors.clean %}
+                <p class="field-error" style="color:red;">{{ form_errors.clean.0 }}</p>
+            {% endif %}
         </div>
 
         <div class="form-group">
@@ -161,6 +175,9 @@
                 placeholder="Please describe the renovation work you'd like completed..."
                 required
             ></textarea>
+            {% if form_errors.description %}
+                <p class="field-error" style="color:red;">{{ form_errors.description.0 }}</p>
+            {% endif %}
         </div>
 
         <div class="form-group">
