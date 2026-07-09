@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Customer, QuotePhoto
+from .models import QuoteRequest, QuotePhoto
 
 
 class QuotePhotoInline(admin.TabularInline):
@@ -7,7 +7,7 @@ class QuotePhotoInline(admin.TabularInline):
     extra = 1
 
 
-@admin.register(Customer)
+@admin.register(QuoteRequest)
 class CustomerAdmin(admin.ModelAdmin):
     list_display = (
         "full_name",

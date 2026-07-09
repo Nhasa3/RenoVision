@@ -1,6 +1,6 @@
 from django.db import models
 
-class Customer(models.Model):
+class QuoteRequest(models.Model):
 
     full_name = models.CharField(max_length=50)
     phone = models.CharField(max_length=20)
@@ -85,12 +85,12 @@ class Customer(models.Model):
         return self.full_name
     
 class QuotePhoto(models.Model):
-    customer = models.ForeignKey(
-        Customer,
+    quote_request = models.ForeignKey(
+        QuoteRequest,
         on_delete=models.CASCADE,
         related_name="quote_photos"
     )
     image = models.ImageField(
         upload_to="quote_photos/"
     )
-    
+
