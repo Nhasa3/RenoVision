@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>New Quote Request</title>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif; color:#333; line-height:1.6;">
+
+<h2>New Quote Request Received</h2>
+
+<p>A customer has submitted a new quote request.</p>
+
+<hr>
+
+<h3>Customer Information</h3>
+
+<table cellpadding="6">
+
+<tr>
+    <td><strong>Name</strong></td>
+    <td>{{ quote.fullname }}</td>
+</tr>
+
+<tr>
+    <td><strong>Email</strong></td>
+    <td>{{ quote.email }}</td>
+</tr>
+
+<tr>
+    <td><strong>Phone</strong></td>
+    <td>{{ quote.phone }}</td>
+</tr>
+
+<tr>
+    <td><strong>Address</strong></td>
+    <td>{{ quote.address }}</td>
+</tr>
+
+<tr>
+    <td><strong>City</strong></td>
+    <td>{{ quote.city }}</td>
+</tr>
+
+<tr>
+    <td><strong>Postal Code</strong></td>
+    <td>{{ quote.postal_code }}</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h3>Project Details</h3>
+
+<table cellpadding="6">
+
+<tr>
+    <td><strong>Project Type</strong></td>
+    <td>{{ quote.project_type }}</td>
+</tr>
+
+<tr>
+    <td><strong>Basement Status</strong></td>
+    <td>{{ quote.basement_status }}</td>
+</tr>
+
+<tr>
+    <td><strong>Budget</strong></td>
+    <td>{{ quote.budget }}</td>
+</tr>
+
+<tr>
+    <td><strong>Timeline</strong></td>
+    <td>{{ quote.timeline }}</td>
+</tr>
+
+<tr>
+    <td><strong>Preferred Contact</strong></td>
+    <td>{{ quote.contact_method }}</td>
+</tr>
+
+</table>
+
+<h3>Project Description</h3>
+
+<p>{{ quote.description }}</p>
+
+<hr>
+
+<p>
+This email was generated automatically from the website quote request form.
+</p>
+
+</body>
+</html>

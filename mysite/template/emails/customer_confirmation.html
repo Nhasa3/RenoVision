@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Quote Request Received</title>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif; color:#333; line-height:1.6;">
+
+    <h2>Thank You, {{ quote.fullname }}!</h2>
+
+    <p>
+        We have successfully received your renovation quote request.
+        Thank you for choosing Ottawa Renovation.
+    </p>
+
+    <p>
+        Our team will review your request and contact you as soon as possible,
+        typically within 1–2 business days.
+    </p>
+
+    <hr>
+
+    <h3>Your Request</h3>
+
+    <table cellpadding="6">
+        <tr>
+            <td><strong>Project Type</strong></td>
+            <td>{{ quote.project_type }}</td>
+        </tr>
+
+        <tr>
+            <td><strong>Address</strong></td>
+            <td>{{ quote.address }}</td>
+        </tr>
+
+        <tr>
+            <td><strong>City</strong></td>
+            <td>{{ quote.city }}</td>
+        </tr>
+
+        <tr>
+            <td><strong>Budget</strong></td>
+            <td>{{ quote.budget }}</td>
+        </tr>
+
+        <tr>
+            <td><strong>Timeline</strong></td>
+            <td>{{ quote.timeline }}</td>
+        </tr>
+
+        <tr>
+            <td><strong>Preferred Contact</strong></td>
+            <td>{{ quote.contact_method }}</td>
+        </tr>
+    </table>
+
+    <h3>Project Description</h3>
+
+    <p>{{ quote.description }}</p>
+
+    <hr>
+
+    <p>
+        If you need to update your request, simply reply to this email or contact us.
+    </p>
+
+    <p>
+        Regards,<br>
+        <strong>Ottawa Renovation Team</strong>
+    </p>
+
+</body>
+</html>

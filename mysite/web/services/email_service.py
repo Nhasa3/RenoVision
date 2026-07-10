@@ -1,3 +1,6 @@
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.conf import settings
 
 
 
@@ -29,7 +32,7 @@ def send_admin_notification(quote):
     email = EmailMultiAlternatives(
         subject=subject,
         body="A new quote request has been submited.",
-        from_email=settings.DEFAULT_FROM_EMIAL,
+        from_email=settings.DEFAULT_FROM_EMAIL,
         to=[settings.ADMIN_EMAIL],
         reply_to=[quote.email],
     )

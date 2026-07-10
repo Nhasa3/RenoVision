@@ -2,6 +2,11 @@ from django.shortcuts import render, redirect
 from .models import QuoteRequest, QuotePhoto
 from .forms import QuoteRequestForm
 from django.contrib import messages
+from .services.email_service import (
+    send_customer_confirmation,
+    send_admin_notification,
+)
+
 
 # Create your views here.
 
@@ -63,6 +68,10 @@ def quote_request(request):
             quote = form.save()
             for file in request.FILES.getlist('photos'):
                 QuotePhoto.objects.create(quote_request=quote, image=file)
+             #Send Emails   
+            send_admin_notification(quote)
+            send_customer_confirmation(quote)
+            
             return redirect('web:thank_you')
         else:
             # Store field-specific errors and submitted values in the session
