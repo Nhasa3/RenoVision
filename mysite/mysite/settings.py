@@ -135,8 +135,8 @@ EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-EMAIL_HOST_USER = "resend"
-EMAIL_HOST_PASSWORD = env("RESEND_API_KEY")
+EMAIL_HOST_USER = "renotest93@gmail.com"
+EMAIL_HOST_PASSWORD = env("EMAIL_PASSWORD")
 ADMIN_EMAIL = "renotest93@gmail.com"
 
 DEFAULT_FROM_EMAIL = "Ottawa Renovation <renotest93@gmail.com>"
