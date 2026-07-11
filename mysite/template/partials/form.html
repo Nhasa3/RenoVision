@@ -184,13 +184,8 @@
                 rows="6"
                 placeholder="Please describe the renovation work you'd like completed..."
                 value="{{ form_data.description|default:'' }}"
-                required
             >
         </textarea>
-            
-            {% if form_errors.description %}
-                <p class="field-error" style="color:red;">{{ form_errors.description.0 }}</p>
-            {% endif %}
         </div>
 
         <div class="form-group">

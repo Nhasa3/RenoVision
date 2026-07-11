@@ -51,12 +51,6 @@ class QuoteRequestForm(forms.ModelForm):
         postal = f"{postal[:3]} {postal[3:]}"
         return postal
     
-    def clean_description(self):
-        description = self.cleaned_data.get("description", "").strip()
-        if len(description) < 20:
-            raise ValidationError("Please provide a bit more detail about you project (at least 20 characters).")
-        return description
-    
     def clean(self):
         cleaned_data = super().clean()
         project_type = cleaned_data.get("project_type")
