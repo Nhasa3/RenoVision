@@ -1,3 +1,5 @@
+import mimetypes
+
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.conf import settings
@@ -36,8 +38,20 @@ def send_admin_notification(quote):
         to=[settings.ADMIN_EMAIL],
         reply_to=[quote.email],
     )
-    
     email.attach_alternative(html_content, "text/html")
+    
+    # Attach uploaded photos
+    for photo in quote.quote_photos.all():
+        if photo.image:
+            mime_type, _ = mimetypes.guess_type(photo.image.path)
+
+            with open(photo.image.path, "rb") as f:
+                email.attach(
+                    filename=photo.image.name.split("/")[-1],
+                    content=f.read(),
+                    mimetype=mime_type or "application/octet-stream",
+                )
+        
     email.send()
     
     
