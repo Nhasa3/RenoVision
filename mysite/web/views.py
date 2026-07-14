@@ -63,7 +63,7 @@ def interlock(request):
     
 def quote_request(request):
     if request.method == "POST":
-        form = QuoteRequestForm(request.POST)
+        form = QuoteRequestForm(request.POST, request.FILES)
         if form.is_valid():
             quote = form.save()
             for file in request.FILES.getlist('photos'):
