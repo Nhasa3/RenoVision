@@ -84,3 +84,6 @@ def quote_request(request):
 
 def thank_you(request):
     return render(request, 'partials/thank_you.html')
+
+def gallary(request):
+    return render(request, 'gallary/gallary.html')
