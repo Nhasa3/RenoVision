@@ -94,3 +94,35 @@ class QuotePhoto(models.Model):
         upload_to="quote_photos/"
     )
 
+
+class Gallery(models.Model):
+    TITLE = [
+        ("Basement Renovation", "Basement Renovation"),
+        ("Kitchen Renovation", "Kitchen Renovation"),
+        ("Bathroom Renovation", "Bathroom Renovation"),
+        ("Flooring", "Flooring"),
+        ("Painting", "Painting"),
+        ("Home Addition", "Home Addition"),
+        ("Full Home Renovation", "Full Home Renovation"),
+        ("Other", "Other"),
+    ]
+
+    title = models.CharField(
+        max_length=50,
+        choices=TITLE,
+    )
+
+    def __str__(self):
+        return self.title
+
+
+class GalleryPhoto(models.Model):
+    gallery = models.ForeignKey(
+        Gallery,
+        on_delete=models.CASCADE,
+        related_name="photos"
+    )
+    image = models.ImageField(upload_to="gallery_photo/")
+
+    def __str__(self):
+        return f"{self.gallery.title}"
