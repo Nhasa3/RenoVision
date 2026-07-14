@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import QuoteRequest, QuotePhoto
+from .models import QuoteRequest, QuotePhoto, Gallery, GalleryPhoto
 
 
 class QuotePhotoInline(admin.TabularInline):
@@ -28,3 +28,13 @@ class CustomerAdmin(admin.ModelAdmin):
         "timeline",
     )
     inlines = [QuotePhotoInline]
+    
+class GalleryPhotoInline(admin.TabularInline):
+    model = GalleryPhoto
+    extra = 1
+
+
+@admin.register(Gallery)
+class GalleryAdmin(admin.ModelAdmin):
+    list_display = ("title",)
+    inlines = [GalleryPhotoInline]
