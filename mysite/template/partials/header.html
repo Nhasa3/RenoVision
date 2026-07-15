@@ -1,28 +1,37 @@
 {% load static %}
 
 <header>
-<div class="header">
-    <div class="logo">
-        <img src="{% static 'resources:logo.jpg'%}" alt="RenoVision Logo" class="header-logo">
-    </div>
-        <!--Navigation-->
+    <div class="header">
+
+        <!-- Logo -->
+        <div class="logo">
+            <img src="{% static 'resources:logo.jpg' %}" alt="RenoVision Logo" class="header-logo">
+        </div>
+
+        <!-- Navigation -->
         <div class="route">
-            <a href="{%url 'web:index' %}" class="btn-primary">Home</a>
+
+            <a href="{% url 'web:index' %}" class="btn-primary">Home</a>
+
+            <!-- Services Dropdown -->
             <div class="dropdown">
-        <div class="btn-primary" style="color: white">Services</div>
+                <div class="btn-primary" style="color: white;">Services</div>
 
-        <div class="dropdown-content">
-            <a href="{%url 'web:basement' %}">Basement Renovation</a>
-            <a href="{%url 'web:kitchen' %}">Kitchen Renovation</a>
-            <a href="{%url 'web:bathroom' %}">Bathroom Renovation</a>
-            <a href="{%url 'web:tv' %}">TV Feature Wall</a>
-            <a href="{%url 'web:interlock' %}">Interlock</a>
-        </div>
-        </div>
-            <a href="{%url 'web:about' %}" class="btn-primary">About</a>
-        </div>
+                <div class="dropdown-content">
+                    <a href="{% url 'web:basement' %}">Basement Renovation</a>
+                    <a href="{% url 'web:kitchen' %}">Kitchen Renovation</a>
+                    <a href="{% url 'web:bathroom' %}">Bathroom Renovation</a>
+                    <a href="{% url 'web:tv' %}">TV Feature Wall</a>
+                    <a href="{% url 'web:interlock' %}">Interlock</a>
+                </div>
+            </div>
 
-</div>
+            <a href="{% url 'web:gallery' %}" class="btn-primary">Gallery</a>
+
+            <a href="{% url 'web:about' %}" class="btn-primary">About</a>
+
+        </div>
+    </div>
 
 
 <script>
