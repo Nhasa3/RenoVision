@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import QuoteRequest, QuotePhoto
+from .models import Gallery, QuoteRequest, QuotePhoto
 from .forms import QuoteRequestForm
 from django.contrib import messages
 from .services.email_service import (
@@ -85,5 +85,6 @@ def quote_request(request):
 def thank_you(request):
     return render(request, 'partials/thank_you.html')
 
-def gallary(request):
-    return render(request, 'gallary/gallary.html')
+def gallery(request):
+    galleries = Gallery.objects.prefetch_related("photos")
+    return render(request, "gallary/gallery.html", {"galleries": galleries})
