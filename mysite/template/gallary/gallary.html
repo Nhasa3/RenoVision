@@ -1,0 +1,50 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'css/header.css' %}">
+
+        <style>
+            .gallery-grid {
+                columns: 4 250px;
+                column-gap: 16px;
+            }
+
+            .gallery-item {
+                break-inside: avoid;
+                margin-bottom: 16px;
+            }
+
+            .gallery-item img {
+                width: 100%;
+                display: block;
+                border-radius: 10px;
+                transition: transform .3s;
+                cursor: pointer;
+            }
+
+            .gallery-item img:hover {
+                transform: scale(1.02);
+            }
+        </style>
+    </head>
+    <body>
+         {% include "../partials/header.html" %}
+        {% for gallery in galleries %}
+    <h2>{{ gallery.title }}</h2>
+
+    <div class="gallery-grid">
+        {% for photo in gallery.photos.all %}
+            <div class="gallery-item">
+                <a href="{{ photo.image.url }}">
+                    <img src="{{ photo.image.url }}" alt="">
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endfor %}
+
+    </body>
+</html>
