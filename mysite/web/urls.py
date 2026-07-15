@@ -16,7 +16,7 @@ urlpatterns = [
     path('about', views.about,name="about"),
     path('quote/', views.quote_request,name="quote_request"),
     path('thank_you/', views.thank_you, name="thank_you"),
-    path('gallary/', views.gallary, name="gallary"),
+    path('gallery/', views.gallery, name="gallery"),
 ]
 
 if settings.DEBUG:
