@@ -1,88 +1,195 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <title>Interlock</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Interlock | RenoVision</title>
+        <meta name="description" content="Interlock driveways, walkways, and patios by RenoVision — built to handle winters without shifting or heaving. Licensed and insured.">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'css/header.css' %}">
+        <link rel="stylesheet" href="{% static 'css/index.css' %}">
         <link rel="stylesheet" href="{% static 'css/form.css' %}">
-
-        <style>
-              #slideshow {
-                position: relative;
-                width: 100%;
-                height: 500px;
-                overflow: hidden;
-            }
-
-            #slideshow img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-
-            /* Arrow button */
-            .next-arrow {
-                position: absolute;
-                right: 15px;
-                top: 50%;
-                transform: translateY(-50%);
-
-                width: 50px;
-                height: 50px;
-
-                border: none;
-                border-radius: 50%;
-                cursor: pointer;
-
-                font-size: 28px;
-                line-height: 50px;
-                text-align: center;
-
-                background: rgba(0, 0, 0, 0.4);
-                color: white;
-
-                transition: background 0.2s ease;
-            }
-
-            .next-arrow:hover {
-                background: rgba(0, 0, 0, 0.7);
-            }
-        </style>
+        <link rel="stylesheet" href="{% static 'css/service.css' %}">
+        <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     </head>
     <body>
         {% include "../partials/header.html" %}
 
-        <div id="slideshow">
-            <img id="slideImage" src="{% static 'resources/basement.jpg' %}">
-            <button class="next-arrow" onclick="nextPhoto()">></button>
-        </div>
+        <!-- ============ HERO SLIDESHOW ============ -->
+        <section id="slideshow">
+            <img id="slideImage" src="{% static 'resources/interlock.jpg' %}" alt="Finished interlock installation by RenoVision">
+            <div class="slide-overlay"></div>
+            <button class="next-arrow" onclick="nextPhoto()" aria-label="Next photo">&rsaquo;</button>
+            <div class="slide-dots" id="slideDots"></div>
 
-        
-    <div class="hero-content">
-        <h1>Professional Home Renovations</h1>
-        <h3>
-            Basement, Kitchen, Bathroom and Full Home Renovations.
-        </h3>
-    </div>
+            <div class="hero-content">
+                <h1>Interlock</h1>
+                <p class="hero-sub">Driveways, walkways, and patios built on a proper base &mdash; so they hold up through winters without shifting or heaving.</p>
+                <a href="#quote" class="btn btn-primary">Get a Free Quote</a>
+            </div>
+        </section>
 
-    <div>
-         {% include "../partials/form.html" %}
-        </div>
+        <!-- ============ OVERVIEW ============ -->
+        <section class="overview">
+            <p class="eyebrow">Overview</p>
+            <h2>Hardscaping that survives freeze-thaw.</h2>
+            <p>Most interlock failures &mdash; sinking, shifting, weeds pushing through &mdash; trace back to a poorly prepared base, not the pavers themselves. We excavate and compact properly before a single paver goes down, so your driveway or patio stays level for years, not one season.</p>
+        </section>
+
+        <!-- ============ WHAT'S INCLUDED ============ -->
+        <section class="scope">
+            <div class="section-heading">
+                <p class="eyebrow">What's Included</p>
+                <h2>Typical project scope</h2>
+                <p class="section-sub">Every property is different &mdash; your quote will spell out exactly what applies to your space.</p>
+            </div>
+            <div class="scope-grid">
+                <div class="scope-item">
+                    <h3>Excavation &amp; Grading</h3>
+                    <p>Proper depth excavation and slope grading for drainage away from your home.</p>
+                </div>
+                <div class="scope-item">
+                    <h3>Base Compaction</h3>
+                    <p>Gravel base laid and compacted in layers &mdash; the step that prevents future sinking.</p>
+                </div>
+                <div class="scope-item">
+                    <h3>Paver Installation</h3>
+                    <p>Driveway, walkway, or patio pavers set, cut, and leveled to your layout.</p>
+                </div>
+                <div class="scope-item">
+                    <h3>Edge Restraints</h3>
+                    <p>Locked edge restraints so pavers don't drift or spread over time.</p>
+                </div>
+                <div class="scope-item">
+                    <h3>Polymeric Sand</h3>
+                    <p>Joint sand that locks pavers together and resists weed growth.</p>
+                </div>
+                <div class="scope-item">
+                    <h3>Retaining Walls &amp; Steps</h3>
+                    <p>Optional retaining walls, garden edging, and interlock steps.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ GALLERY ============ -->
+        <section class="gallery">
+            <div class="section-heading">
+                <p class="eyebrow">Our Work</p>
+                <h2>Recent interlock projects</h2>
+            </div>
+            <div class="gallery-grid">
+                <img src="{% static 'resources/interlock.jpg' %}" alt="Interlock driveway installation">
+                <img src="{% static 'resources/interlock.jpg' %}" alt="Interlock patio installation">
+                <img src="{% static 'resources/interlock.jpg' %}" alt="Interlock walkway installation">
+                <img src="{% static 'resources/interlock.jpg' %}" alt="Interlock retaining wall installation">
+            </div>
+            <p class="gallery-note">Replace these with real project photos &mdash; a gallery of your own finished interlock jobs sells the service far better than repeated images.</p>
+        </section>
+
+        <!-- ============ WHY US ============ -->
+        <section class="why-us">
+            <div class="section-heading">
+                <p class="eyebrow">Why RenoVision</p>
+                <h2>Built for freeze-thaw climates specifically</h2>
+            </div>
+            <div class="why-grid">
+                <div class="why-item">
+                    <span class="why-index">01</span>
+                    <h3>Proper base depth</h3>
+                    <p>We don't shortcut excavation depth &mdash; it's the single biggest factor in longevity.</p>
+                </div>
+                <div class="why-item">
+                    <span class="why-index">02</span>
+                    <h3>Drainage-first grading</h3>
+                    <p>Every surface graded to move water away from your foundation, not toward it.</p>
+                </div>
+                <div class="why-item">
+                    <span class="why-index">03</span>
+                    <h3>Fixed, itemized quotes</h3>
+                    <p>You'll know the full cost before work starts &mdash; no surprise change orders.</p>
+                </div>
+                <div class="why-item">
+                    <span class="why-index">04</span>
+                    <h3>Workmanship warranty</h3>
+                    <p>If pavers shift or settle from installation error, we come back and fix it.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ LEAD FORM ============ -->
+        <section class="quote-section" id="quote">
+            <div class="quote-intro">
+                <p class="eyebrow">Get Started</p>
+                <h2>Get a free interlock quote</h2>
+                <p>Tell us about your space and we'll get back to you within 24 hours with next steps.</p>
+            </div>
+            <div class="quote-form">
+                {% include "../partials/form.html" %}
+            </div>
+        </section>
+
+        <!-- ============ RELATED SERVICES ============ -->
+        <section class="related">
+            <div class="section-heading">
+                <p class="eyebrow">Explore More</p>
+                <h2>Other renovation services</h2>
+            </div>
+            <div class="related-grid">
+                <a href="{% url 'web:basement' %}" class="related-card">
+                    <img src="{% static 'resources/basement.jpg' %}" alt="Basement renovation">
+                    <h3>Basement Renovations</h3>
+                </a>
+                <a href="{% url 'web:kitchen' %}" class="related-card">
+                    <img src="{% static 'resources/kitchen.jpg' %}" alt="Kitchen renovation">
+                    <h3>Kitchen Renovations</h3>
+                </a>
+                <a href="{% url 'web:bathroom' %}" class="related-card">
+                    <img src="{% static 'resources/toilet.jpg' %}" alt="Bathroom renovation">
+                    <h3>Bathroom Renovations</h3>
+                </a>
+            </div>
+        </section>
+
+        {% include "../partials/footer.html" %}
 
         <script>
             const images = [
-            "{% static 'resources/basement.jpg' %}",
-            "{% static 'resources/kitchen.jpg' %}",
-            "{% static 'resources/tv.jpg' %}"
+                "{% static 'resources/interlock.jpg' %}",
+                "{% static 'resources/basement.jpg' %}",
+                "{% static 'resources/kitchen.jpg' %}"
             ];
-
             let current = 0;
+            const slideImage = document.getElementById("slideImage");
+            const dotsWrap = document.getElementById("slideDots");
 
-            function nextPhoto(){
-                current = (current + 1) % images.length;
-                document.getElementById("slideImage").src = images[current];
+            images.forEach((_, i) => {
+                const dot = document.createElement("span");
+                dot.className = "dot" + (i === 0 ? " active" : "");
+                dot.onclick = () => goTo(i);
+                dotsWrap.appendChild(dot);
+            });
+
+            function updateDots() {
+                [...dotsWrap.children].forEach((d, i) => d.classList.toggle("active", i === current));
             }
-            setInterval(nextPhoto, 4000);
+
+            function goTo(i) {
+                current = i;
+                slideImage.src = images[current];
+                updateDots();
+            }
+
+            function nextPhoto() {
+                goTo((current + 1) % images.length);
+            }
+
+            let timer = setInterval(nextPhoto, 5000);
+            const slideshow = document.getElementById("slideshow");
+            slideshow.addEventListener("mouseenter", () => clearInterval(timer));
+            slideshow.addEventListener("mouseleave", () => timer = setInterval(nextPhoto, 5000));
         </script>
     </body>
 </html>

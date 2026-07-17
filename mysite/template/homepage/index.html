@@ -11,6 +11,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'css/header.css' %}">
         <link rel="stylesheet" href="{% static 'css/index.css' %}">
+        <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     </head>
 
     <body>
@@ -25,7 +26,7 @@
                 <h1>Renovations built<br>to actually live in.</h1>
                 <p class="hero-sub">From basements to bathrooms, we plan, build, and finish every project like it's our own home &mdash; on schedule and on budget.</p>
                 <div class="hero-actions">
-                    <a href="#contact" class="btn btn-primary">Book a Free Consultation</a>
+                    <a href="{% url 'web:basement'%}#quote" class="btn btn-primary">Book a Free Consultation</a>
                     <a href="#services" class="btn btn-ghost">See Our Services</a>
                 </div>
             </div>
@@ -155,7 +156,7 @@
         <section class="cta" id="contact">
             <h2>Ready to start your renovation?</h2>
             <p>Get a free, no-obligation consultation and quote from RenoVision.</p>
-            <a href="#contact" class="btn btn-primary">Get Your Free Quote</a>
+            <a href="{% url 'web:basement'%}#quote" class="btn btn-primary">Get Your Free Quote</a>
         </section>
 
         {% include "../partials/footer.html" %}

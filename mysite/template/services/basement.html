@@ -1,88 +1,196 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <title>Basement</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Basement Renovations | RenoVision</title>
+        <meta name="description" content="Basement renovations by RenoVision — framing, egress windows, waterproofing, electrical, and finishing. Licensed, insured, and built to add real living space.">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'css/header.css' %}">
+        <link rel="stylesheet" href="{% static 'css/index.css' %}">
         <link rel="stylesheet" href="{% static 'css/form.css' %}">
-        <style>
-            #slideshow {
-                position: relative;
-                width: 100%;
-                height: 500px;
-                overflow: hidden;
-            }
-
-            #slideshow img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-
-            /* Arrow button */
-            .next-arrow {
-                position: absolute;
-                right: 15px;
-                top: 50%;
-                transform: translateY(-50%);
-
-                width: 50px;
-                height: 50px;
-
-                border: none;
-                border-radius: 50%;
-                cursor: pointer;
-
-                font-size: 28px;
-                line-height: 50px;
-                text-align: center;
-
-                background: rgba(0, 0, 0, 0.4);
-                color: white;
-
-                transition: background 0.2s ease;
-            }
-
-            .next-arrow:hover {
-                background: rgba(0, 0, 0, 0.7);
-            }
-        </style>
+        <link rel="stylesheet" href="{% static 'css/service.css' %}">
+        <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     </head>
     <body>
         {% include "../partials/header.html" %}
 
-            <div id="slideshow">
-                <img id="slideImage" src="{% static 'resources/basement.jpg' %}">
-                <button class="next-arrow" onclick="nextPhoto()">›</button>
+        <!-- ============ HERO SLIDESHOW ============ -->
+        <section id="slideshow">
+            <img id="slideImage" src="{% static 'resources/basement.jpg' %}" alt="Finished basement renovation by RenoVision">
+            <div class="slide-overlay"></div>
+            <button class="next-arrow" onclick="nextPhoto()" aria-label="Next photo">&rsaquo;</button>
+            <div class="slide-dots" id="slideDots"></div>
+
+            <div class="hero-content">
+                <p class="breadcrumb"><a href="#">Services</a> / Basement Renovations</p>
+                <h1>Basement Renovations</h1>
+                <p class="hero-sub">Turn unused square footage into a family room, home theatre, gym, or income-generating rental suite &mdash; done right, from framing to final coat.</p>
+                <a href="#quote" class="btn btn-primary">Get a Free Quote</a>
             </div>
+        </section>
 
-    <div class="hero-content">
-        <h1>Professional Home Renovations</h1>
-        <h3>
-            Basement, Kitchen, Bathroom and Full Home Renovations.
-        </h3>
-    </div>
+        <!-- ============ OVERVIEW ============ -->
+        <section class="overview">
+            <p class="eyebrow">Overview</p>
+            <h2>A basement that actually gets used.</h2>
+            <p>Most basements sit half-finished because they're cold, damp, or dark. We handle the parts homeowners usually get stuck on &mdash; moisture control, permits, egress windows, and proper insulation &mdash; so the space is comfortable and code-compliant, not just painted drywall over a problem.</p>
+        </section>
 
-        <div>
-         {% include "../partials/form.html" %}
-        </div>
+        <!-- ============ WHAT'S INCLUDED ============ -->
+        <section class="scope">
+            <div class="section-heading">
+                <p class="eyebrow">What's Included</p>
+                <h2>Typical project scope</h2>
+                <p class="section-sub">Every basement is different &mdash; your quote will spell out exactly what applies to your space.</p>
+            </div>
+            <div class="scope-grid">
+                <div class="scope-item">
+                    <h3>Waterproofing &amp; Moisture Control</h3>
+                    <p>Vapor barriers, sump pump checks, and drainage assessment before anything gets framed.</p>
+                </div>
+                <div class="scope-item">
+                    <h3>Framing &amp; Insulation</h3>
+                    <p>Code-compliant framing and insulation suited to below-grade conditions.</p>
+                </div>
+                <div class="scope-item">
+                    <h3>Electrical &amp; Lighting</h3>
+                    <p>Licensed electrical work, pot lighting layouts, and panel upgrades where needed.</p>
+                </div>
+                <div class="scope-item">
+                    <h3>Egress Windows</h3>
+                    <p>Code-required egress installation for bedrooms and rental-suite compliance.</p>
+                </div>
+                <div class="scope-item">
+                    <h3>Flooring &amp; Drywall</h3>
+                    <p>Moisture-appropriate flooring options and a clean drywall/paint finish.</p>
+                </div>
+                <div class="scope-item">
+                    <h3>Bathrooms &amp; Wet Bars</h3>
+                    <p>Optional rough-in and finishing for a basement bathroom, kitchenette, or bar.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ GALLERY ============ -->
+        <section class="gallery">
+            <div class="section-heading">
+                <p class="eyebrow">Our Work</p>
+                <h2>Recent basement projects</h2>
+            </div>
+            <div class="gallery-grid">
+                <img src="{% static 'resources/basement.jpg' %}" alt="Basement family room renovation">
+                <img src="{% static 'resources/basement.jpg' %}" alt="Basement home theatre renovation">
+                <img src="{% static 'resources/basement.jpg' %}" alt="Basement rental suite renovation">
+                <img src="{% static 'resources/basement.jpg' %}" alt="Basement bar and lounge renovation">
+            </div>
+            <p class="gallery-note">Replace these with real project photos &mdash; a gallery of your own finished basements sells the service far better than stock or repeated images.</p>
+        </section>
+
+        <!-- ============ WHY US ============ -->
+        <section class="why-us">
+            <div class="section-heading">
+                <p class="eyebrow">Why RenoVision</p>
+                <h2>Built for below-grade work specifically</h2>
+            </div>
+            <div class="why-grid">
+                <div class="why-item">
+                    <span class="why-index">01</span>
+                    <h3>Moisture-first approach</h3>
+                    <p>We assess drainage and waterproofing before design, not after problems show up.</p>
+                </div>
+                <div class="why-item">
+                    <span class="why-index">02</span>
+                    <h3>Permits handled for you</h3>
+                    <p>Egress, electrical, and structural permits pulled and managed on your behalf.</p>
+                </div>
+                <div class="why-item">
+                    <span class="why-index">03</span>
+                    <h3>Fixed, itemized quotes</h3>
+                    <p>You'll know the full cost before work starts &mdash; no surprise change orders.</p>
+                </div>
+                <div class="why-item">
+                    <span class="why-index">04</span>
+                    <h3>One team, start to finish</h3>
+                    <p>Framing, electrical, and finishing crews are ours &mdash; no juggling subcontractors.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ LEAD FORM ============ -->
+        <section class="quote-section" id="quote">
+            <div class="quote-intro">
+                <p class="eyebrow">Get Started</p>
+                <h2>Get a free basement quote</h2>
+                <p>Tell us about your space and we'll get back to you within 24 hours with next steps.</p>
+            </div>
+            <div class="quote-form">
+                {% include "../partials/form.html" %}
+            </div>
+        </section>
+
+        <!-- ============ RELATED SERVICES ============ -->
+        <section class="related">
+            <div class="section-heading">
+                <p class="eyebrow">Explore More</p>
+                <h2>Other renovation services</h2>
+            </div>
+            <div class="related-grid">
+                <a href="{% url 'web:kitchen' %}" class="related-card">
+                    <img src="{% static 'resources/kitchen.jpg' %}" alt="Kitchen renovation">
+                    <h3>Kitchen Renovations</h3>
+                </a>
+                <a href="{% url 'web:bathroom' %}" class="related-card">
+                    <img src="{% static 'resources/toilet.jpg' %}" alt="Bathroom renovation">
+                    <h3>Bathroom Renovations</h3>
+                </a>
+                <a href="{% url 'web:tv' %}" class="related-card">
+                    <img src="{% static 'resources/tv.jpg' %}" alt="TV feature wall">
+                    <h3>TV Feature Walls</h3>
+                </a>
+            </div>
+        </section>
+
+        {% include "../partials/footer.html" %}
 
         <script>
             const images = [
-            "{% static 'resources/basement.jpg' %}",
-            "{% static 'resources/kitchen.jpg' %}",
-            "{% static 'resources/tv.jpg' %}"
+                "{% static 'resources/basement.jpg' %}",
+                "{% static 'resources/kitchen.jpg' %}",
+                "{% static 'resources/tv.jpg' %}"
             ];
-
             let current = 0;
+            const slideImage = document.getElementById("slideImage");
+            const dotsWrap = document.getElementById("slideDots");
 
-            function nextPhoto(){
-                current = (current + 1) % images.length;
-                document.getElementById("slideImage").src = images[current];
+            images.forEach((_, i) => {
+                const dot = document.createElement("span");
+                dot.className = "dot" + (i === 0 ? " active" : "");
+                dot.onclick = () => goTo(i);
+                dotsWrap.appendChild(dot);
+            });
+
+            function updateDots() {
+                [...dotsWrap.children].forEach((d, i) => d.classList.toggle("active", i === current));
             }
-            setInterval(nextPhoto, 4000);
+
+            function goTo(i) {
+                current = i;
+                slideImage.src = images[current];
+                updateDots();
+            }
+
+            function nextPhoto() {
+                goTo((current + 1) % images.length);
+            }
+
+            let timer = setInterval(nextPhoto, 5000);
+            const slideshow = document.getElementById("slideshow");
+            slideshow.addEventListener("mouseenter", () => clearInterval(timer));
+            slideshow.addEventListener("mouseleave", () => timer = setInterval(nextPhoto, 5000));
         </script>
-
-
     </body>
 </html>
