@@ -1,30 +1,262 @@
-.intro {
-    height: 100vh;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* ===========================================================
+   RenoVision — Homepage styles
+   Append this to css/index.css (or link it as its own file).
+   Palette:
+     --charcoal   #1C1E22  (near-black, headlines/nav)
+     --concrete   #EDE8DD  (warm off-white background)
+     --copper     #B5652D  (accent — CTAs, eyebrows)
+     --slate      #3D4E5C  (secondary accent, links)
+     --line       #D8D2C4  (hairline borders)
+   Type:
+     Display: 'Zilla Slab' (slab serif, structural, construction-adjacent)
+     Body:    'Work Sans'
+   =========================================================== */
+
+:root {
+    --charcoal: #1C1E22;
+    --concrete: #EDE8DD;
+    --copper: #B5652D;
+    --slate: #3D4E5C;
+    --line: #D8D2C4;
 }
-.intro-bg {
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--concrete);
+    color: var(--charcoal);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: 'Zilla Slab', serif;
+    font-weight: 600;
+    line-height: 1.15;
+    margin: 0;
+}
+
+.eyebrow {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--copper);
+    margin: 0 0 0.75rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.85rem 1.75rem;
+    border-radius: 2px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+.btn-primary {
+    background: var(--copper);
+    color: #fff;
+}
+.btn-primary:hover { background: #9c5426; transform: translateY(-1px); }
+.btn-ghost {
+    background: transparent;
+    color: var(--concrete);
+    border: 1px solid rgba(237,232,221,0.6);
+}
+.btn-ghost:hover { background: rgba(237,232,221,0.12); }
+
+/* ---------- Hero ---------- */
+.hero {
+    position: relative;
+    height: 88vh;
+    min-height: 560px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    color: var(--concrete);
+}
+.hero-bg {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-.intro h1 {
-    position: relative;
-    z-index: 2;
-    color: white;
-    font-size: 4rem;
-    text-align: center;
-}
-.intro::before {
-    content: "";
+.hero-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: linear-gradient(0deg, rgba(28,30,34,0.92) 0%, rgba(28,30,34,0.55) 45%, rgba(28,30,34,0.25) 100%);
+}
+.hero-content {
+    position: relative;
     z-index: 1;
+    max-width: 720px;
+    padding: 0 6vw 6vw;
+}
+.hero-content h1 {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    margin-bottom: 1rem;
+}
+.hero-sub {
+    font-size: 1.1rem;
+    max-width: 46ch;
+    color: rgba(237,232,221,0.9);
+    margin-bottom: 1.75rem;
+}
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* ---------- Trust strip ---------- */
+.trust-strip {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3.5rem;
+    background: var(--charcoal);
+    color: var(--concrete);
+    padding: 2.5rem 6vw;
+}
+.trust-item { text-align: center; }
+.trust-number {
+    display: block;
+    font-family: 'Zilla Slab', serif;
+    font-size: 2rem;
+    color: var(--copper);
+}
+.trust-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(237,232,221,0.75);
+}
+
+/* ---------- About ---------- */
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 6rem auto;
+    padding: 0 6vw;
+}
+.about-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 4/5;
+    border-radius: 2px;
+}
+.about-copy h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: 1.25rem; }
+.about-copy p { max-width: 52ch; margin: 0 0 1rem; color: #45403a; }
+.about-points {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+    display: grid;
+    gap: 0.6rem;
+}
+.about-points li {
+    padding-left: 1.4rem;
+    position: relative;
+    font-weight: 500;
+}
+.about-points li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 8px;
+    height: 8px;
+    background: var(--copper);
+}
+
+/* ---------- Section heading (shared) ---------- */
+.section-heading {
+    max-width: 640px;
+    margin: 0 auto 3rem;
+    text-align: center;
+    padding: 0 6vw;
+}
+.section-heading h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); }
+.section-sub { color: #55504a; margin-top: 0.75rem; }
+
+/* ---------- Services ---------- */
+.services { padding: 6rem 0; }
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 6vw;
+}
+.service-card {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    color: var(--charcoal);
+    border-radius: 3px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid var(--line);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(28,30,34,0.14);
+}
+.service-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+.service-card-body { padding: 1.25rem 1.4rem 1.5rem; }
+.service-card-body h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.4rem;
+}
+.service-card-body p {
+    margin: 0;
+    font-size: 0.92rem;
+    color: #55504a;
+}
+
+/* ---------- Process ---------- */
+.process { background: #fff; padding: 6rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.process-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 6vw;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2.5rem;
+}
+.step-index {
+    font-family: 'Zilla Slab', serif;
+    font-size: 1.4rem;
+    color: var(--copper);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+.process-step h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.process-step p { margin: 0; color: #55504a; font-size: 0.94rem; }
+
+/* ---------- CTA ---------- */
+.cta {
+    background: var(--charcoal);
+    color: var(--concrete);
+    text-align: center;
+    padding: 5rem 6vw;
+}
+.cta h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: 0.75rem; }
+.cta p { color: rgba(237,232,221,0.85); margin-bottom: 2rem; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 820px) {
+    .about { grid-template-columns: 1fr; }
+    .about-media { order: -1; }
 }

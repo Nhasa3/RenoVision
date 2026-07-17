@@ -1,60 +1,162 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <Title>RenoVision</Title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>RenoVision | Full-Service Home Renovation</title>
+        <meta name="description" content="RenoVision is a full-service renovation company specializing in basements, kitchens, bathrooms, feature walls, and interlock. Licensed, insured, and built on craftsmanship.">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'css/header.css' %}">
         <link rel="stylesheet" href="{% static 'css/index.css' %}">
-
     </head>
 
     <body>
         {% include "../partials/header.html" %}
 
-        <div class="intro">
-            <img src="{% static 'resources/h-bg.jpg' %}" class="intro-bg" >
-            <h1>RenoVision</h1>
-        </div>
+        <!-- ============ HERO ============ -->
+        <section class="hero">
+            <img src="{% static 'resources/h-bg.jpg' %}" class="hero-bg" alt="Recently renovated home interior by RenoVision">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <p class="eyebrow">Licensed &amp; Insured General Contractor</p>
+                <h1>Renovations built<br>to actually live in.</h1>
+                <p class="hero-sub">From basements to bathrooms, we plan, build, and finish every project like it's our own home &mdash; on schedule and on budget.</p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">Book a Free Consultation</a>
+                    <a href="#services" class="btn btn-ghost">See Our Services</a>
+                </div>
+            </div>
+        </section>
 
-        <!--Display services (Basement)-->
-        <a href="{%url 'web:basement' %}">
-        <div class="intro">
-            <img src="{% static 'resources/basement.jpg' %}" class="intro-bg">
-            <h1>Basement Renovations</h1>
-        </div>
-        </a>
+        <!-- ============ TRUST STRIP ============ -->
+        <section class="trust-strip">
+            <div class="trust-item">
+                <span class="trust-number">5+</span>
+                <span class="trust-label">Years in Business</span>
+            </div>
+            <div class="trust-item">
+                <span class="trust-number">50+</span>
+                <span class="trust-label">Projects Completed</span>
+            </div>
+            <div class="trust-item">
+                <span class="trust-number">100%</span>
+                <span class="trust-label">Licensed &amp; Insured</span>
+            </div>
+            <div class="trust-item">
+                <span class="trust-number">4.9/5</span>
+                <span class="trust-label">Average Client Rating</span>
+            </div>
+        </section>
 
-        <!--Display services (Kitchen)-->
-        <a href="{% url 'web:kitchen' %}">
-        <div class="intro">
-            <img src="{% static 'resources/kitchen.jpg' %}" class="intro-bg">
-            <h1>Kitchen Renovations</h1>
-        </div>
-        </a>
+        <!-- ============ ABOUT ============ -->
+        <section class="about" id="about">
+            <div class="about-media">
+                <img src="{% static 'resources/kitchen.jpg' %}" alt="A RenoVision kitchen renovation">
+            </div>
+            <div class="about-copy">
+                <p class="eyebrow">About RenoVision</p>
+                <h2>A local team that treats your home like it matters.</h2>
+                <p>RenoVision is a full-service renovation company built on a simple idea: good work speaks for itself. We handle everything from the first measurement to the final walkthrough &mdash; design, permits, materials, and skilled trades &mdash; so you deal with one team, not five subcontractors.</p>
+                <p>Every project is backed by transparent pricing, a written timeline, and a crew that shows up when they say they will.</p>
+                <ul class="about-points">
+                    <li>In-house design &amp; project management</li>
+                    <li>Fixed, itemized quotes &mdash; no surprise costs</li>
+                    <li>Dedicated site supervisor on every job</li>
+                    <li>Warrantied workmanship</li>
+                </ul>
+            </div>
+        </section>
 
-        <!--Display services (Bathroom)-->
-        <a href="{% url 'web:bathroom' %}">
-        <div class="intro">
-            <img src="{% static 'resources/toilet.jpg' %}" class="intro-bg">
-            <h1>Bathroom Renovations</h1>
-        </div>
-        </a>
+        <!-- ============ SERVICES ============ -->
+        <section class="services" id="services">
+            <div class="section-heading">
+                <p class="eyebrow">What We Do</p>
+                <h2>Renovation services</h2>
+                <p class="section-sub">Pick a space below to see past work, materials, and typical project scope.</p>
+            </div>
 
-        <!--Display services (TV)-->
-       <a href="{% url 'web:tv' %}">
-        <div class="intro">
-            <img src="{% static 'resources/tv.jpg' %}" class="intro-bg">
-            <h1>TV Feature Wall</h1>
-        </div>
-        </a>
+            <div class="service-grid">
+                <a href="{% url 'web:basement' %}" class="service-card">
+                    <img src="{% static 'resources/basement.jpg' %}" alt="Finished basement renovation">
+                    <div class="service-card-body">
+                        <h3>Basement Renovations</h3>
+                        <p>Turn unused square footage into a living room, home theatre, or rental suite.</p>
+                    </div>
+                </a>
 
-        <!--Display services (Interlock)-->
-        <a href="{% url 'web:interlock' %}">
-        <div class="intro">
-            <img src="{% static 'resources/interlock.jpg' %}" class="intro-bg">
-            <h1>Interlock</h1>
-        </div>
-        </a>
+                <a href="{% url 'web:kitchen' %}" class="service-card">
+                    <img src="{% static 'resources/kitchen.jpg' %}" alt="Modern kitchen renovation">
+                    <div class="service-card-body">
+                        <h3>Kitchen Renovations</h3>
+                        <p>Custom cabinetry, countertops, and layouts designed around how you actually cook.</p>
+                    </div>
+                </a>
+
+                <a href="{% url 'web:bathroom' %}" class="service-card">
+                    <img src="{% static 'resources/toilet.jpg' %}" alt="Bathroom renovation">
+                    <div class="service-card-body">
+                        <h3>Bathroom Renovations</h3>
+                        <p>Full gut renovations, tiling, and fixtures built for daily use and long-term durability.</p>
+                    </div>
+                </a>
+
+                <a href="{% url 'web:tv' %}" class="service-card">
+                    <img src="{% static 'resources/tv.jpg' %}" alt="TV feature wall installation">
+                    <div class="service-card-body">
+                        <h3>TV Feature Walls</h3>
+                        <p>Statement walls with integrated media, lighting, and hidden cable management.</p>
+                    </div>
+                </a>
+
+                <a href="{% url 'web:interlock' %}" class="service-card">
+                    <img src="{% static 'resources/interlock.jpg' %}" alt="Interlock driveway and patio installation">
+                    <div class="service-card-body">
+                        <h3>Interlock</h3>
+                        <p>Driveways, walkways, and patios built to handle winters without shifting or heaving.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- ============ PROCESS ============ -->
+        <section class="process">
+            <div class="section-heading">
+                <p class="eyebrow">How It Works</p>
+                <h2>From first call to final walkthrough</h2>
+            </div>
+            <div class="process-grid">
+                <div class="process-step">
+                    <span class="step-index">01</span>
+                    <h3>Consultation</h3>
+                    <p>We visit your space, talk through your goals and budget, and scope the project honestly.</p>
+                </div>
+                <div class="process-step">
+                    <span class="step-index">02</span>
+                    <h3>Design &amp; Quote</h3>
+                    <p>You get a detailed plan, material selections, and a fixed, itemized quote before anything starts.</p>
+                </div>
+                <div class="process-step">
+                    <span class="step-index">03</span>
+                    <h3>Build</h3>
+                    <p>A dedicated supervisor keeps the crew, schedule, and site cleanliness on track.</p>
+                </div>
+                <div class="process-step">
+                    <span class="step-index">04</span>
+                    <h3>Walkthrough</h3>
+                    <p>We inspect every detail with you and back the finished work with our warranty.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ CTA ============ -->
+        <section class="cta" id="contact">
+            <h2>Ready to start your renovation?</h2>
+            <p>Get a free, no-obligation consultation and quote from RenoVision.</p>
+            <a href="#contact" class="btn btn-primary">Get Your Free Quote</a>
+        </section>
 
         {% include "../partials/footer.html" %}
     </body>
