@@ -4,6 +4,10 @@
         {% for message in messages %}
             <p style="color:red; font-weight:bold;">{{ message }}</p>
         {% endfor %}
+        {% if form_errors.clean %}
+            <p class="field-error" style="color:red;">{{ form_errors.clean.0 }}</p>
+        {% endif %}
+
         <h2>Request a Free Quote</h2>
         <p>
             Tell us about your renovation project and we'll contact you
@@ -56,20 +60,7 @@
             >
         </div>
 
-        <!-- Property Information -->
-        <div class="form-group">
-            <label for="address">Project Address *</label>
-            <input
-                type="text"
-                id="address"
-                name="address"
-                class="form-control"
-                placeholder="123 Main Street"
-                value="{{ form_data.address|default:'' }}"
-                required
-            >
-        </div>
-
+        <!-- Project Location -->
         <div class="form-group">
             <label for="city">City *</label>
             <input
@@ -83,20 +74,18 @@
             >
         </div>
 
+        <!-- Project Location -->
         <div class="form-group">
-            <label for="postal_code">Postal Code *</label>
+            <label for="address">Project Address *</label>
             <input
                 type="text"
-                id="postal_code"
-                name="postal_code"
+                id="address"
+                name="address"
                 class="form-control"
-                placeholder="K1A 0A6"
-                value="{{ form_data.postal_code|default:'' }}"
+                placeholder="123 Main St"
+                value="{{ form_data.address|default:'' }}"
                 required
             >
-            {% if form_errors.postal_code %}
-                <p class="field-error" style="color:red;">{{ form_errors.postal_code.0 }}</p>
-            {% endif %}
         </div>
 
         <!-- Project Details -->
@@ -106,37 +95,17 @@
                 id="project_type"
                 name="project_type"
                 class="form-control"
-                value="{{ form_data.project_type|default:'' }}"
                 required
             >
                 <option value="">Select a project type</option>
                 <option>Basement Renovation</option>
                 <option>Kitchen Renovation</option>
                 <option>Bathroom Renovation</option>
-                <option>Flooring</option>
-                <option>Painting</option>
-                <option>Home Addition</option>
+                <option>TV Feature Wall</option>
+                <option>Interlock</option>
                 <option>Full Home Renovation</option>
                 <option>Other</option>
             </select>
-        </div>
-
-        <div class="form-group">
-            <label for="basement_status">Basement Status</label>
-            <select
-                id="basement_status"
-                name="basement_status"
-                class="form-control"
-                value="{{ form_data.basement_status|default:'' }}"
-            >
-                <option value="">Not Applicable</option>
-                <option>Unfinished Basement</option>
-                <option>Partially Finished Basement</option>
-                <option>Finished Basement Remodel</option>
-            </select>
-            {% if form_errors.clean %}
-                <p class="field-error" style="color:red;">{{ form_errors.clean.0 }}</p>
-            {% endif %}
         </div>
 
         <div class="form-group">
@@ -145,7 +114,6 @@
                 id="budget"
                 name="budget"
                 class="form-control"
-                value="{{ form_data.budget|default:'' }}"
             >
                 <option value="">Select a budget range</option>
                 <option>Under $10,000</option>
@@ -162,7 +130,6 @@
                 id="timeline"
                 name="timeline"
                 class="form-control"
-                value="{{ form_data.timeline|default:'' }}"
             >
                 <option value="">Select a timeline</option>
                 <option>ASAP</option>
@@ -183,24 +150,7 @@
                 class="form-control"
                 rows="6"
                 placeholder="Please describe the renovation work you'd like completed..."
-                value="{{ form_data.description|default:'' }}"
-            >
-        </textarea>
-        </div>
-
-        <div class="form-group">
-            <label for="contact_method">
-                Preferred Contact Method
-            </label>
-            <select
-                id="contact_method"
-                name="contact_method"
-                class="form-control"
-            >
-                <option>Phone</option>
-                <option>Email</option>
-                <option>Text Message</option>
-            </select>
+            >{{ form_data.description|default:'' }}</textarea>
         </div>
 
         <div class="form-group">
