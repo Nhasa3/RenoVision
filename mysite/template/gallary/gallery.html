@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'css/header.css' %}">
+
+        <style>
+        .gallery-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .gallery-item {
+            width: calc(33.333% - 14px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+        body{
+            padding-top: 6%;
+        }
+        </style>
+    </head>
+    <body>
+
+        {% include "../partials/header.html" %}
+        <div class="gallery-container">
+            <div class="gallery-grid">
+                {% for gallery in galleries %}
+                    {% for photo in gallery.photos.all %}
+                        <div class="gallery-item">
+                            <a href="{{ photo.image.url }}">
+                                <img src="{{ photo.image.url }}" alt="">
+                            </a>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+
+    </body>
+</html>
