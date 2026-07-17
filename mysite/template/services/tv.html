@@ -1,88 +1,195 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <title>TV Feature Wall</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TV Feature Walls | RenoVision</title>
+        <meta name="description" content="TV feature walls by RenoVision — statement walls with integrated media, lighting, and hidden cable management. Licensed and insured.">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'css/header.css' %}">
+        <link rel="stylesheet" href="{% static 'css/index.css' %}">
         <link rel="stylesheet" href="{% static 'css/form.css' %}">
-        <style>
-            #slideshow {
-                position: relative;
-                width: 100%;
-                height: 500px;
-                overflow: hidden;
-            }
-
-            #slideshow img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-
-            /* Arrow button */
-            .next-arrow {
-                position: absolute;
-                right: 15px;
-                top: 50%;
-                transform: translateY(-50%);
-
-                width: 50px;
-                height: 50px;
-
-                border: none;
-                border-radius: 50%;
-                cursor: pointer;
-
-                font-size: 28px;
-                line-height: 50px;
-                text-align: center;
-
-                background: rgba(0, 0, 0, 0.4);
-                color: white;
-
-                transition: background 0.2s ease;
-            }
-
-            .next-arrow:hover {
-                background: rgba(0, 0, 0, 0.7);
-            }
-        </style>
+        <link rel="stylesheet" href="{% static 'css/service.css' %}">
     </head>
     <body>
         {% include "../partials/header.html" %}
 
-            <div id="slideshow">
-                <img id="slideImage" src="{% static 'resources/basement.jpg' %}">
-                <button class="next-arrow" onclick="nextPhoto()">›</button>
+        <!-- ============ HERO SLIDESHOW ============ -->
+        <section id="slideshow">
+            <img id="slideImage" src="{% static 'resources/tv.jpg' %}" alt="Finished TV feature wall by RenoVision">
+            <div class="slide-overlay"></div>
+            <button class="next-arrow" onclick="nextPhoto()" aria-label="Next photo">&rsaquo;</button>
+            <div class="slide-dots" id="slideDots"></div>
+
+            <div class="hero-content">
+                <p class="breadcrumb"><a href="{% url 'web:home' %}">Services</a> / TV Feature Walls</p>
+                <h1>TV Feature Walls</h1>
+                <p class="hero-sub">A statement wall with integrated media, lighting, and every cable hidden &mdash; built around your TV, not just behind it.</p>
+                <a href="#quote" class="btn btn-primary">Get a Free Quote</a>
             </div>
+        </section>
 
-    <div class="hero-content">
-        <h1>Professional Home Renovations</h1>
-        <h3>
-            Basement, Kitchen, Bathroom and Full Home Renovations.
-        </h3>
-    </div>
+        <!-- ============ OVERVIEW ============ -->
+        <section class="overview">
+            <p class="eyebrow">Overview</p>
+            <h2>A wall that anchors the room.</h2>
+            <p>A feature wall is one of the highest-impact changes you can make to a living room for the cost. We design around your TV size, seating layout, and material preference &mdash; wood slats, stone veneer, electric fireplace, floating shelving &mdash; with every cable and cord run inside the wall.</p>
+        </section>
 
-        <div>
-         {% include "../partials/form.html" %}
-        </div>
+        <!-- ============ WHAT'S INCLUDED ============ -->
+        <section class="scope">
+            <div class="section-heading">
+                <p class="eyebrow">What's Included</p>
+                <h2>Typical project scope</h2>
+                <p class="section-sub">Every feature wall is different &mdash; your quote will spell out exactly what applies to your space.</p>
+            </div>
+            <div class="scope-grid">
+                <div class="scope-item">
+                    <h3>Framing &amp; Backing</h3>
+                    <p>Proper wall backing so your TV and shelving are securely mounted, not just anchored to drywall.</p>
+                </div>
+                <div class="scope-item">
+                    <h3>Cable Management</h3>
+                    <p>In-wall conduit so power and HDMI cables never show.</p>
+                </div>
+                <div class="scope-item">
+                    <h3>Material Finish</h3>
+                    <p>Wood slats, stone veneer, shiplap, or panel finishes matched to your space.</p>
+                </div>
+                <div class="scope-item">
+                    <h3>Lighting</h3>
+                    <p>LED accent lighting and dimmable ambient lighting built into the design.</p>
+                </div>
+                <div class="scope-item">
+                    <h3>Electric Fireplace</h3>
+                    <p>Optional built-in electric fireplace integration below or beside the TV.</p>
+                </div>
+                <div class="scope-item">
+                    <h3>Floating Shelving</h3>
+                    <p>Custom shelving for media components, decor, or a soundbar.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ GALLERY ============ -->
+        <section class="gallery">
+            <div class="section-heading">
+                <p class="eyebrow">Our Work</p>
+                <h2>Recent feature wall projects</h2>
+            </div>
+            <div class="gallery-grid">
+                <img src="{% static 'resources/tv.jpg' %}" alt="TV feature wall with wood slats">
+                <img src="{% static 'resources/tv.jpg' %}" alt="TV feature wall with electric fireplace">
+                <img src="{% static 'resources/tv.jpg' %}" alt="TV feature wall with floating shelves">
+                <img src="{% static 'resources/tv.jpg' %}" alt="TV feature wall with stone veneer">
+            </div>
+            <p class="gallery-note">Replace these with real project photos &mdash; a gallery of your own finished walls sells the service far better than repeated images.</p>
+        </section>
+
+        <!-- ============ WHY US ============ -->
+        <section class="why-us">
+            <div class="section-heading">
+                <p class="eyebrow">Why RenoVision</p>
+                <h2>Built for feature walls specifically</h2>
+            </div>
+            <div class="why-grid">
+                <div class="why-item">
+                    <span class="why-index">01</span>
+                    <h3>Zero visible cables</h3>
+                    <p>All wiring routed inside the wall before finishing &mdash; nothing taped or draped after install.</p>
+                </div>
+                <div class="why-item">
+                    <span class="why-index">02</span>
+                    <h3>Proper mounting backing</h3>
+                    <p>Framed and backed for the actual weight of your TV and shelving, not just drywall anchors.</p>
+                </div>
+                <div class="why-item">
+                    <span class="why-index">03</span>
+                    <h3>Fixed, itemized quotes</h3>
+                    <p>You'll know the full cost before work starts &mdash; no surprise change orders.</p>
+                </div>
+                <div class="why-item">
+                    <span class="why-index">04</span>
+                    <h3>Fast install</h3>
+                    <p>Most feature walls complete in one to three days with minimal disruption.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ LEAD FORM ============ -->
+        <section class="quote-section" id="quote">
+            <div class="quote-intro">
+                <p class="eyebrow">Get Started</p>
+                <h2>Get a free feature wall quote</h2>
+                <p>Tell us about your space and we'll get back to you within 24 hours with next steps.</p>
+            </div>
+            <div class="quote-form">
+                {% include "../partials/form.html" %}
+            </div>
+        </section>
+
+        <!-- ============ RELATED SERVICES ============ -->
+        <section class="related">
+            <div class="section-heading">
+                <p class="eyebrow">Explore More</p>
+                <h2>Other renovation services</h2>
+            </div>
+            <div class="related-grid">
+                <a href="{% url 'web:basement' %}" class="related-card">
+                    <img src="{% static 'resources/basement.jpg' %}" alt="Basement renovation">
+                    <h3>Basement Renovations</h3>
+                </a>
+                <a href="{% url 'web:kitchen' %}" class="related-card">
+                    <img src="{% static 'resources/kitchen.jpg' %}" alt="Kitchen renovation">
+                    <h3>Kitchen Renovations</h3>
+                </a>
+                <a href="{% url 'web:bathroom' %}" class="related-card">
+                    <img src="{% static 'resources/toilet.jpg' %}" alt="Bathroom renovation">
+                    <h3>Bathroom Renovations</h3>
+                </a>
+            </div>
+        </section>
+
+        {% include "../partials/footer.html" %}
 
         <script>
             const images = [
-            "{% static 'resources/basement.jpg' %}",
-            "{% static 'resources/kitchen.jpg' %}",
-            "{% static 'resources/tv.jpg' %}"
+                "{% static 'resources/tv.jpg' %}",
+                "{% static 'resources/basement.jpg' %}",
+                "{% static 'resources/kitchen.jpg' %}"
             ];
-
             let current = 0;
+            const slideImage = document.getElementById("slideImage");
+            const dotsWrap = document.getElementById("slideDots");
 
-            function nextPhoto(){
-                current = (current + 1) % images.length;
-                document.getElementById("slideImage").src = images[current];
+            images.forEach((_, i) => {
+                const dot = document.createElement("span");
+                dot.className = "dot" + (i === 0 ? " active" : "");
+                dot.onclick = () => goTo(i);
+                dotsWrap.appendChild(dot);
+            });
+
+            function updateDots() {
+                [...dotsWrap.children].forEach((d, i) => d.classList.toggle("active", i === current));
             }
-            setInterval(nextPhoto, 4000);
+
+            function goTo(i) {
+                current = i;
+                slideImage.src = images[current];
+                updateDots();
+            }
+
+            function nextPhoto() {
+                goTo((current + 1) % images.length);
+            }
+
+            let timer = setInterval(nextPhoto, 5000);
+            const slideshow = document.getElementById("slideshow");
+            slideshow.addEventListener("mouseenter", () => clearInterval(timer));
+            slideshow.addEventListener("mouseleave", () => timer = setInterval(nextPhoto, 5000));
         </script>
-
-
     </body>
 </html>
