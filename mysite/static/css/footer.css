@@ -1,0 +1,122 @@
+/* ===========================================================
+   RenoVision — Footer styles
+   Append to css/index.css (already linked on the homepage
+   and every service page, so the footer stays consistent
+   everywhere without an extra <link> tag).
+   Uses the same tokens as the rest of the site:
+     --charcoal #1C1E22   --concrete #EDE8DD
+     --copper   #B5652D   --slate    #3D4E5C
+     --line     #D8D2C4
+   =========================================================== */
+
+.site-footer {
+    background: var(--charcoal);
+    color: rgba(237,232,221,0.85);
+    padding: 4.5rem 6vw 0;
+}
+
+.footer-top {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 2.5rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(237,232,221,0.12);
+}
+
+.footer-brand h3 {
+    font-family: 'Zilla Slab', serif;
+    color: var(--concrete);
+    font-size: 1.4rem;
+    margin-bottom: 0.9rem;
+}
+
+.footer-brand p {
+    max-width: 34ch;
+    font-size: 0.92rem;
+    color: rgba(237,232,221,0.7);
+    margin: 0 0 1.25rem;
+}
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+}
+.footer-social a {
+    font-size: 0.85rem;
+    color: var(--copper);
+    text-decoration: none;
+    font-weight: 600;
+}
+.footer-social a:hover { text-decoration: underline; }
+
+.footer-col h4 {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--concrete);
+    margin: 0 0 1.1rem;
+}
+
+.footer-col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.65rem;
+}
+
+.footer-col a {
+    color: rgba(237,232,221,0.75);
+    text-decoration: none;
+    font-size: 0.92rem;
+}
+.footer-col a:hover { color: var(--copper); }
+
+.footer-contact li {
+    font-size: 0.92rem;
+    color: rgba(237,232,221,0.75);
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 0.82rem;
+    color: rgba(237,232,221,0.55);
+}
+
+.footer-legal {
+    display: flex;
+    gap: 1.5rem;
+}
+.footer-legal a {
+    font-size: 0.82rem;
+    color: rgba(237,232,221,0.55);
+    text-decoration: none;
+}
+.footer-legal a:hover { color: var(--copper); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+    .footer-top {
+        grid-template-columns: 1fr 1fr;
+    }
+    .footer-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 520px) {
+    .footer-top { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+}
