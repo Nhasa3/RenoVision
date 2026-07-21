@@ -88,3 +88,9 @@ def thank_you(request):
 def gallery(request):
     galleries = Gallery.objects.prefetch_related("photos")
     return render(request, "gallary/gallery.html", {"galleries": galleries})
+
+def privacy_policy(request):
+    return render(request, "partials/privacy_policy.html")
+
+def terms_of_service(request):
+    return render(request, "partials/terms_of_service.html")
