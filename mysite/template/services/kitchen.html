@@ -28,7 +28,7 @@
             <div class="hero-content">
                 <h1>Kitchen Renovations</h1>
                 <p class="hero-sub">Custom cabinetry, countertops, and layouts designed around how you actually cook and gather &mdash; not a showroom display.</p>
-                <a href="#quote" class="btn btn-primary">Get a Free Quote</a>
+                <a href="{% url 'web:form' %}" class="btn btn-primary">Get a Free Quote</a>
             </div>
         </section>
 
@@ -127,7 +127,7 @@
                 <p>Tell us about your space and we'll get back to you within 24 hours with next steps.</p>
             </div>
             <div class="quote-form">
-                {% include "../partials/form.html" %}
+                <a href="{% url 'web:form' %}" class="btn btn-primary">Get a Free Quote</a>
             </div>
         </section>
 
