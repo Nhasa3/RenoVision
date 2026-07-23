@@ -1,40 +1,124 @@
 {% load static %}
 
-<header>
-    <div class="header">
+{% load static %}
 
-        <!-- Logo -->
-        <div class="logo">
-            <img src="{% static 'resources:logo.jpg' %}" alt="RenoVision Logo" class="header-logo">
-        </div>
+<header class="header" id="header">
 
-        <!-- Navigation -->
-        <div class="route">
+    <a href="{% url 'web:index' %}" class="logo">
+        <img src="{% static 'resources:logo.png' %}" alt="RenoVision Logo" class="header-logo">
+    </a>
 
-            <a href="{% url 'web:index' %}" class="route">Home</a>
 
-            <!-- Services Dropdown -->
-            <div class="dropdown">
-                <div class="route" style="color: white;">Services</div>
+    <button class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
 
-                <div class="dropdown-content">
-                    <a href="{% url 'web:basement' %}">Basement Renovation</a>
-                    <a href="{% url 'web:kitchen' %}">Kitchen Renovation</a>
-                    <a href="{% url 'web:bathroom' %}">Bathroom Renovation</a>
-                    <a href="{% url 'web:tv' %}">TV Feature Wall</a>
-                    <a href="{% url 'web:interlock' %}">Interlock</a>
-                </div>
+
+    <nav class="route" id="navMenu">
+
+        <a href="{% url 'web:index' %}">
+            Home
+        </a>
+
+
+        <div class="dropdown">
+
+            <button class="dropbtn">
+                Services
+            </button>
+
+
+            <div class="dropdown-content">
+
+                <a href="{% url 'web:basement' %}">
+                    Basement Renovation
+                </a>
+
+                <a href="{% url 'web:kitchen' %}">
+                    Kitchen Renovation
+                </a>
+
+                <a href="{% url 'web:bathroom' %}">
+                    Bathroom Renovation
+                </a>
+
+                <a href="{% url 'web:tv' %}">
+                    TV Feature Wall
+                </a>
+
+                <a href="{% url 'web:interlock' %}">
+                    Interlock
+                </a>
+
             </div>
 
-            <a href="{% url 'web:gallery' %}" class="route">Gallery</a>
-
-            <a href="{% url 'web:about' %}" class="route">About</a>
-
         </div>
-    </div>
 
 
+        <a href="{% url 'web:gallery' %}">
+            Gallery
+        </a>
+
+
+        <a href="{% url 'web:about' %}">
+            About
+        </a>
+
+
+    </nav>
+
+</header>
 <script>
 
+const menu = document.getElementById("navMenu");
+const toggle = document.getElementById("menuToggle");
+const services = document.getElementById("servicesBtn");
+const header = document.getElementById("header");
+
+// Mobile menu
+toggle.addEventListener("click", () => {
+
+    menu.classList.toggle("active");
+
+    toggle.innerHTML =
+        menu.classList.contains("active")
+            ? "&times;"
+            : "☰";
+
+});
+
+// Mobile services dropdown
+services.addEventListener("click", function () {
+
+    if (window.innerWidth <= 768) {
+
+        this.parentElement.classList.toggle("active");
+
+    }
+
+});
+
+// Hide header when scrolling down
+let lastScroll = 0;
+
+window.addEventListener("scroll", () => {
+
+    const current = window.pageYOffset;
+
+    if (current > lastScroll && current > 80) {
+
+        header.classList.add("hide");
+
+    } else {
+
+        header.classList.remove("hide");
+
+    }
+
+    lastScroll = current;
+
+});
+
 </script>
-</header>
