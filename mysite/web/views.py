@@ -92,3 +92,9 @@ def gallery(request):
 
 def form(request):
     return render(request, 'partials/form.html')
+
+def privacy_policy(request):
+    return render(request, "partials/privacy_policy.html")
+
+def terms_of_service(request):
+    return render(request, "partials/terms_of_service.html")

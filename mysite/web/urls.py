@@ -17,7 +17,9 @@ urlpatterns = [
     path('quote/', views.quote_request,name="quote_request"),
     path('thank_you/', views.thank_you, name="thank_you"),
     path('gallery/', views.gallery, name="gallery"),
-    path('form/', views.form, name="form"),]
+    path('form/', views.form, name="form"),
+    path('privacy/', views.privacy_policy, name="privacy"),
+    path('terms/', views.terms_of_service, name="term"),]
 
 if settings.DEBUG:
     urlpatterns += static(
