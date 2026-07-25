@@ -1,51 +1,258 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="{% static 'css/header.css' %}">
+<html lang="en">
 
-        <style>
-        .gallery-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            width: 100%;
-            padding: 20px;
-            box-sizing: border-box;
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gallery | Total Renovation</title>
+
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+
+    <style>
+
+        :root{
+            --charcoal:#1C1E22;
+            --concrete:#EDE8DD;
+            --copper:#B5652D;
         }
 
-        .gallery-item {
-            width: calc(33.333% - 14px);
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
         }
 
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 10px;
-        }
         body{
-            padding-top: 6%;
+            font-family:"Work Sans",sans-serif;
+            background:var(--concrete);
+            color:var(--charcoal);
+            padding-top:75px;
+            overflow-x:hidden;
         }
-        </style>
-    </head>
-    <body>
 
-        {% include "../partials/header.html" %}
-        <div class="gallery-container">
-            <div class="gallery-grid">
-                {% for gallery in galleries %}
-                    {% for photo in gallery.photos.all %}
-                        <div class="gallery-item">
-                            <a href="{{ photo.image.url }}">
-                                <img src="{{ photo.image.url }}" alt="">
-                            </a>
-                        </div>
-                    {% endfor %}
-                {% endfor %}
-            </div>
+        /* ==========================
+           Hero
+        ========================== */
+
+        .gallery-hero{
+
+            padding:90px 20px 70px;
+
+            text-align:center;
+
+            background:#fff;
+
+            border-bottom:1px solid #ddd;
+
+        }
+
+        .eyebrow{
+
+            color:var(--copper);
+
+            text-transform:uppercase;
+
+            letter-spacing:.15em;
+
+            font-size:.8rem;
+
+            font-weight:600;
+
+            margin-bottom:15px;
+
+        }
+
+        .gallery-hero h1{
+
+            font-size:clamp(2.3rem,5vw,3.8rem);
+
+            font-family:"Zilla Slab",serif;
+
+            margin-bottom:20px;
+
+        }
+
+        .gallery-hero p{
+
+            max-width:700px;
+
+            margin:auto;
+
+            color:#555;
+
+            line-height:1.8;
+
+        }
+
+        /* ==========================
+           Gallery
+        ========================== */
+
+        .gallery-section{
+
+            max-width:1400px;
+
+            margin:70px auto;
+
+            padding:0 25px;
+
+        }
+
+        .gallery-grid{
+
+            display:grid;
+
+            grid-template-columns:repeat(3,1fr);
+
+            gap:25px;
+
+        }
+
+        .gallery-item{
+
+            overflow:hidden;
+
+            border-radius:14px;
+
+            background:#fff;
+
+            box-shadow:0 12px 25px rgba(0,0,0,.08);
+
+            transition:.35s;
+
+        }
+
+        .gallery-item:hover{
+
+            transform:translateY(-6px);
+
+            box-shadow:0 20px 40px rgba(0,0,0,.15);
+
+        }
+
+        .gallery-item img{
+
+            width:100%;
+
+            height:320px;
+
+            object-fit:cover;
+
+            display:block;
+
+            transition:transform .4s;
+
+        }
+
+        .gallery-item:hover img{
+
+            transform:scale(1.05);
+
+        }
+
+        /* ==========================
+           Tablet
+        ========================== */
+
+        @media(max-width:992px){
+
+            .gallery-grid{
+
+                grid-template-columns:repeat(2,1fr);
+
+            }
+
+            .gallery-item img{
+
+                height:280px;
+
+            }
+
+        }
+
+        /* ==========================
+           Mobile
+        ========================== */
+
+        @media(max-width:768px){
+
+            .gallery-hero{
+
+                padding:70px 20px 50px;
+
+            }
+
+            .gallery-grid{
+
+                grid-template-columns:1fr;
+
+                gap:18px;
+
+            }
+
+            .gallery-item img{
+
+                height:240px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    {% include "../partials/header.html" %}
+
+    <section class="gallery-hero">
+
+        <div class="eyebrow">
+            Our Work
         </div>
 
-    </body>
+        <h1>
+            Renovation Gallery
+        </h1>
+
+        <p>
+            Browse a selection of our completed renovation projects, including kitchens,
+            bathrooms, basements, feature walls, interlock installations and full-home
+            transformations. Every project reflects our commitment to quality workmanship,
+            attention to detail and lasting results.
+        </p>
+
+    </section>
+
+    <section class="gallery-section">
+
+        <div class="gallery-grid">
+
+            {% for gallery in galleries %}
+                {% for photo in gallery.photos.all %}
+
+                    <a class="gallery-item"
+                       href="{{ photo.image.url }}">
+
+                        <img
+                            src="{{ photo.image.url }}"
+                            alt="Renovation Project">
+
+                    </a>
+
+                {% endfor %}
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+</body>
+
 </html>
