@@ -89,6 +89,10 @@ def gallery(request):
     galleries = Gallery.objects.prefetch_related("photos")
     return render(request, "gallary/gallery.html", {"galleries": galleries})
 
+
+def form(request):
+    return render(request, 'partials/form.html')
+
 def privacy_policy(request):
     return render(request, "partials/privacy_policy.html")
 

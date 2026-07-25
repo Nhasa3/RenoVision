@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Basement Renovations | RenoVision</title>
+        <title>Basement Renovations | Tottal Renovation</title>
         <meta name="description" content="Basement renovations by RenoVision — framing, egress windows, waterproofing, electrical, and finishing. Licensed, insured, and built to add real living space.">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +28,7 @@
             <div class="hero-content">
                 <h1>Basement Renovations</h1>
                 <p class="hero-sub">Turn unused square footage into a family room, home theatre, gym, or income-generating rental suite &mdash; done right, from framing to final coat.</p>
-                <a href="#quote" class="btn btn-primary">Get a Free Quote</a>
+                <a href="{% url 'web:form' %}" class="btn btn-primary">Get a Free Quote</a>
             </div>
         </section>
 
@@ -92,7 +92,7 @@
         <!-- ============ WHY US ============ -->
         <section class="why-us">
             <div class="section-heading">
-                <p class="eyebrow">Why RenoVision</p>
+                <p class="eyebrow">Why Tottal Renovation</p>
                 <h2>Built for below-grade work specifically</h2>
             </div>
             <div class="why-grid">
@@ -127,7 +127,7 @@
                 <p>Tell us about your space and we'll get back to you within 24 hours with next steps.</p>
             </div>
             <div class="quote-form">
-                {% include "../partials/form.html" %}
+                    <a href="{% url 'web:form'%}" class="btn btn-primary">Book a Free Consultation</a>
             </div>
         </section>
 

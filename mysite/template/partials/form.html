@@ -1,174 +1,355 @@
-<div class="form-container">
-    <form method="post" action="{% url 'web:quote_request' %}" enctype="multipart/form-data">
-        {% csrf_token %}
-        {% for message in messages %}
-            <p style="color:red; font-weight:bold;">{{ message }}</p>
-        {% endfor %}
-        {% if form_errors.clean %}
-            <p class="field-error" style="color:red;">{{ form_errors.clean.0 }}</p>
-        {% endif %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-        <h2>Request a Free Quote</h2>
-        <p>
-            Tell us about your renovation project and we'll contact you
-            with an estimate or schedule a site visit.
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Request a Quote | Tottal Renovation</title>
+
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600&family=Zilla+Slab:wght@500;600&display=swap" rel="stylesheet">
+
+</head>
+
+
+<body>
+{% include '../partials/header.html' %}
+
+<!-- HERO -->
+
+<section class="quote-hero">
+    <div class="quote-hero-content">
+        <p class="eyebrow">
+            Start Your Renovation Journey
         </p>
+        <h3>
+            Transform Your House Into A Place You Love Coming Home To.
+        </h3>
+    </div>
+</section>
 
-        <!-- Contact Information -->
-        <div class="form-group">
-            <label for="full_name">Full Name *</label>
-            <input
-                type="text"
-                id="full_name"
-                name="full_name"
-                class="form-control"
-                placeholder="Joe Smith"
-                value="{{ form_data.full_name|default:'' }}"
-                required
-            >
-            {% if form_errors.full_name %}
-                <p class="field-error" style="color:red;">{{ form_errors.full_name.0 }}</p>
-            {% endif %}
+<!-- QUOTE FORM -->
+
+
+<section class="quote-form-section">
+
+
+    <div class="form-container">
+
+
+        <form method="post"
+              action="/quote-request/"
+              enctype="multipart/form-data">
+
+
+            <h2>
+                Request Your Free Quote
+            </h2>
+
+
+            <p class="form-description">
+                Tell us about your renovation project and
+                we will contact you to discuss the next steps.
+            </p>
+
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label>
+                        Full Name *
+                    </label>
+
+                    <input type="text"
+                           name="full_name"
+                           placeholder="Joe Smith"
+                           required>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Phone Number *
+                    </label>
+
+                    <input type="tel"
+                           name="phone"
+                           placeholder="(555) 123-4567"
+                           required>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Email Address *
+                    </label>
+
+                    <input type="email"
+                           name="email"
+                           placeholder="joe@email.com"
+                           required>
+
+                </div>
+
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        City *
+                    </label>
+
+                    <input type="text"
+                           name="city"
+                           placeholder="Ottawa"
+                           required>
+
+                </div>
+
+
+
+
+                <div class="form-group full">
+
+                    <label>
+                        Project Address *
+                    </label>
+
+                    <input type="text"
+                           name="address"
+                           placeholder="123 Main Street"
+                           required>
+
+                </div>
+
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Project Type *
+                    </label>
+
+
+                    <select name="project_type">
+
+                        <option>
+                            Select project type
+                        </option>
+
+                        <option>
+                            Basement Renovation
+                        </option>
+
+                        <option>
+                            Kitchen Renovation
+                        </option>
+
+                        <option>
+                            Bathroom Renovation
+                        </option>
+
+                        <option>
+                            Full Home Renovation
+                        </option>
+
+                        <option>
+                            Other
+                        </option>
+
+                    </select>
+
+
+                </div>
+
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Estimated Budget
+                    </label>
+
+
+                    <select name="budget">
+
+                        <option>
+                            Select budget range
+                        </option>
+
+                        <option>
+                            Under $10,000
+                        </option>
+
+                        <option>
+                            $10,000 - $25,000
+                        </option>
+
+                        <option>
+                            $25,000 - $50,000
+                        </option>
+
+                        <option>
+                            $50,000+
+                        </option>
+
+                    </select>
+
+
+                </div>
+
+
+
+
+
+                <div class="form-group full">
+
+
+                    <label>
+                        Describe Your Project
+                    </label>
+
+
+                    <textarea name="description"
+                              rows="6"
+                              placeholder="Tell us about your renovation ideas..."></textarea>
+
+
+                </div>
+
+
+
+
+
+                <div class="form-group full">
+
+                    <label>
+                        Upload Photos Or Plans
+                    </label>
+
+
+                    <input type="file"
+                           name="photos"
+                           multiple
+                           accept="image/*,.pdf">
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+            <button type="submit">
+
+                Request Free Quote
+
+            </button>
+
+
+
+        </form>
+
+
+    </div>
+
+
+</section>
+
+
+
+
+
+<!-- PROCESS -->
+
+
+<section class="process">
+
+
+    <h2>
+        Our Simple Renovation Process
+    </h2>
+
+
+
+    <div class="process-grid">
+
+
+        <div>
+
+            <span>
+                01
+            </span>
+
+            Consultation
+
         </div>
 
-        <div class="form-group">
-            <label for="phone">Phone Number *</label>
-            <input
-                type="tel"
-                id="phone"
-                name="phone"
-                class="form-control"
-                placeholder="(555) 123-4567"
-                value="{{ form_data.phone|default:'' }}"
-                required
-            >
-            {% if form_errors.phone %}
-                <p class="field-error" style="color:red;">{{ form_errors.phone.0 }}</p>
-            {% endif %}
+
+
+        <div>
+
+            <span>
+                02
+            </span>
+
+            Planning
+
         </div>
 
-        <div class="form-group">
-            <label for="email">Email Address *</label>
-            <input
-                type="email"
-                id="email"
-                name="email"
-                class="form-control"
-                placeholder="Joe@gmail.com"
-                value="{{ form_data.email|default:'' }}"
-                required
-            >
+
+
+        <div>
+
+            <span>
+                03
+            </span>
+
+            Construction
+
         </div>
 
-        <!-- Project Location -->
-        <div class="form-group">
-            <label for="city">City *</label>
-            <input
-                type="text"
-                id="city"
-                name="city"
-                class="form-control"
-                placeholder="Ottawa"
-                value="{{ form_data.city|default:'' }}"
-                required
-            >
+
+
+        <div>
+
+            <span>
+                04
+            </span>
+
+            Final Reveal
+
         </div>
 
-        <!-- Project Location -->
-        <div class="form-group">
-            <label for="address">Project Address *</label>
-            <input
-                type="text"
-                id="address"
-                name="address"
-                class="form-control"
-                placeholder="123 Main St"
-                value="{{ form_data.address|default:'' }}"
-                required
-            >
-        </div>
 
-        <!-- Project Details -->
-        <div class="form-group">
-            <label for="project_type">Project Type *</label>
-            <select
-                id="project_type"
-                name="project_type"
-                class="form-control"
-                required
-            >
-                <option value="">Select a project type</option>
-                <option>Basement Renovation</option>
-                <option>Kitchen Renovation</option>
-                <option>Bathroom Renovation</option>
-                <option>TV Feature Wall</option>
-                <option>Interlock</option>
-                <option>Full Home Renovation</option>
-                <option>Other</option>
-            </select>
-        </div>
+    </div>
 
-        <div class="form-group">
-            <label for="budget">Estimated Budget</label>
-            <select
-                id="budget"
-                name="budget"
-                class="form-control"
-            >
-                <option value="">Select a budget range</option>
-                <option>Under $10,000</option>
-                <option>$10,000 - $25,000</option>
-                <option>$25,000 - $50,000</option>
-                <option>$50,000 - $100,000</option>
-                <option>$100,000+</option>
-            </select>
-        </div>
 
-        <div class="form-group">
-            <label for="timeline">Desired Start Time</label>
-            <select
-                id="timeline"
-                name="timeline"
-                class="form-control"
-            >
-                <option value="">Select a timeline</option>
-                <option>ASAP</option>
-                <option>Within 1 Month</option>
-                <option>1–3 Months</option>
-                <option>3–6 Months</option>
-                <option>Just Planning</option>
-            </select>
-        </div>
+</section>
 
-        <div class="form-group">
-            <label for="description">
-                Describe Your Project
-            </label>
-            <textarea
-                id="description"
-                name="description"
-                class="form-control"
-                rows="6"
-                placeholder="Please describe the renovation work you'd like completed..."
-            >{{ form_data.description|default:'' }}</textarea>
-        </div>
+{% include '../partials/footer.html' %}
 
-        <div class="form-group">
-            <label for="photos">
-                Upload Photos or Plans
-            </label>
-            <input
-                type="file"
-                id="photos"
-                name="photos"
-                class="form-control"
-                multiple
-                accept="image/*,.pdf"
-            >
-        </div>
 
-        <button type="submit" class="btn btn-primary">
-            Request Free Quote
-        </button>
-    </form>
-</div>
+</body>
+
+</html>

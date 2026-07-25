@@ -4,8 +4,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Kitchen Renovations | RenoVision</title>
-        <meta name="description" content="Kitchen renovations by RenoVision — cabinetry, countertops, layouts, and finishes built around how you actually cook. Licensed and insured.">
+        <title>Kitchen Renovations | Tottal Renovation</title>
+        <meta name="description" content="Kitchen renovations by Tottal Renovation — cabinetry, countertops, layouts, and finishes built around how you actually cook. Licensed and insured.">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
 
         <!-- ============ HERO SLIDESHOW ============ -->
         <section id="slideshow">
-            <img id="slideImage" src="{% static 'resources/kitchen.jpg' %}" alt="Finished kitchen renovation by RenoVision">
+            <img id="slideImage" src="{% static 'resources/kitchen.jpg' %}" alt="Finished kitchen renovation by Tottal Renovation">
             <div class="slide-overlay"></div>
             <button class="next-arrow" onclick="nextPhoto()" aria-label="Next photo">&rsaquo;</button>
             <div class="slide-dots" id="slideDots"></div>
@@ -28,7 +28,7 @@
             <div class="hero-content">
                 <h1>Kitchen Renovations</h1>
                 <p class="hero-sub">Custom cabinetry, countertops, and layouts designed around how you actually cook and gather &mdash; not a showroom display.</p>
-                <a href="#quote" class="btn btn-primary">Get a Free Quote</a>
+                <a href="{% url 'web:form' %}" class="btn btn-primary">Get a Free Quote</a>
             </div>
         </section>
 
@@ -92,7 +92,7 @@
         <!-- ============ WHY US ============ -->
         <section class="why-us">
             <div class="section-heading">
-                <p class="eyebrow">Why RenoVision</p>
+                <p class="eyebrow">Why Tottal Renovation</p>
                 <h2>Built for kitchens specifically</h2>
             </div>
             <div class="why-grid">
@@ -127,7 +127,7 @@
                 <p>Tell us about your space and we'll get back to you within 24 hours with next steps.</p>
             </div>
             <div class="quote-form">
-                {% include "../partials/form.html" %}
+                <a href="{% url 'web:form' %}" class="btn btn-primary">Get a Free Quote</a>
             </div>
         </section>
 
