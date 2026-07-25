@@ -5,7 +5,7 @@
 <header class="header" id="header">
 
     <a href="{% url 'web:index' %}" class="logo">
-        <img src="{% static 'resources:logo.png' %}" alt="RenoVision Logo" class="header-logo">
+        <img src="{% static 'resources/lgo.png' %}" alt="RenoVision Logo" class="header-logo">
     </a>
 
 
@@ -90,11 +90,27 @@ toggle.addEventListener("click", () => {
 });
 
 // Mobile services dropdown
-services.addEventListener("click", function () {
+services.addEventListener("click", function (e) {
 
     if (window.innerWidth <= 768) {
 
+        e.preventDefault();
+        e.stopPropagation();
+
         this.parentElement.classList.toggle("active");
+
+    }
+
+});
+
+document.addEventListener("click", function (e) {
+
+    if (window.innerWidth <= 768 &&
+        !e.target.closest(".dropdown")) {
+
+        document
+            .querySelector(".dropdown")
+            .classList.remove("active");
 
     }
 
