@@ -142,6 +142,31 @@ p {
 
 }
 
+.field-error {
+    display: block;
+    color: #d32f2f;
+    font-size: 0.85rem;
+    margin-top: 4px;
+}
+
+.form-alert {
+    background-color: #fdecea;
+    color: #d32f2f;
+    border: 1px solid #f5c2c0;
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+/* Optional: highlight the input itself when it has an error */
+.form-group input:invalid,
+.form-group.has-error input,
+.form-group.has-error select,
+.form-group.has-error textarea {
+    border-color: #d32f2f;
+}
+
 
 
 .quote-hero h1 {
