@@ -24,46 +24,24 @@ def services(request):
 
 
 def basement(request):
-    form_errors = request.session.pop('quote_form_errors', None)
-    form_data = request.session.pop('quote_form_data', None)
-    return render(request, 'services/basement.html', {
-        'form_errors': form_errors,
-        'form_data': form_data,
-    })
+    return render(request, 'services/basement.html')
     
 def kitchen(request):
-    form_errors = request.session.pop('quote_form_errors', None)
-    form_data = request.session.pop('quote_form_data', None)
-    return render(request, 'services/kitchen.html', {
-        'form_errors': form_errors,
-        'form_data': form_data,
-    })
+    return render(request, 'services/kitchen.html')
+
 def bathroom(request):
-    form_errors = request.session.pop('quote_form_errors', None)
-    form_data = request.session.pop('quote_form_data', None)
-    return render(request, 'services/bathroom.html', {
-        'form_errors': form_errors,
-        'form_data': form_data,
-    })
+    return render(request, 'services/bathroom.html')
+
 def tv(request):
-    form_errors = request.session.pop('quote_form_errors', None)
-    form_data = request.session.pop('quote_form_data', None)
-    return render(request, 'services/tv.html', {
-        'form_errors': form_errors,
-        'form_data': form_data,
-    })
+    return render(request, 'services/tv.html')
     
 def interlock(request):
-    form_errors = request.session.pop('quote_form_errors', None)
-    form_data = request.session.pop('quote_form_data', None)
-    return render(request, 'services/interlock.html', {
-        'form_errors': form_errors,
-        'form_data': form_data,
-    })
+    return render(request, 'services/interlock.html')
     
 def quote_request(request):
     if request.method == "POST":
         form = QuoteRequestForm(request.POST, request.FILES)
+        
         if form.is_valid():
             quote = form.save()
             for file in request.FILES.getlist('photos'):
@@ -91,7 +69,12 @@ def gallery(request):
 
 
 def form(request):
-    return render(request, 'partials/form.html')
+    form_errors = request.session.pop('quote_form_errors', None)
+    form_data = request.session.pop('quote_form_data', None)
+    return render(request, 'partials/form.html', {
+        'form_errors': form_errors,
+        'form_data': form_data,
+    })
 
 def privacy_policy(request):
     return render(request, "partials/privacy_policy.html")

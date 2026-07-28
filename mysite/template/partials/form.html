@@ -44,231 +44,183 @@
 
 
         <form method="post"
-              action="/quote-request/"
-              enctype="multipart/form-data">
-
-
-            <h2>
-                Request Your Free Quote
-            </h2>
-
-
-            <p class="form-description">
-                Tell us about your renovation project and
-                we will contact you to discuss the next steps.
-            </p>
-
-
-
-            <div class="form-grid">
-
-
-                <div class="form-group">
-
-                    <label>
-                        Full Name *
-                    </label>
-
-                    <input type="text"
-                           name="full_name"
-                           placeholder="Joe Smith"
-                           required>
-
-                </div>
-
-
-
-                <div class="form-group">
-
-                    <label>
-                        Phone Number *
-                    </label>
-
-                    <input type="tel"
-                           name="phone"
-                           placeholder="(555) 123-4567"
-                           required>
-
-                </div>
-
-
-
-                <div class="form-group">
-
-                    <label>
-                        Email Address *
-                    </label>
-
-                    <input type="email"
-                           name="email"
-                           placeholder="joe@email.com"
-                           required>
-
-                </div>
-
-
-
-
-                <div class="form-group">
-
-                    <label>
-                        City *
-                    </label>
-
-                    <input type="text"
-                           name="city"
-                           placeholder="Ottawa"
-                           required>
-
-                </div>
-
-
-
-
-                <div class="form-group full">
-
-                    <label>
-                        Project Address *
-                    </label>
-
-                    <input type="text"
-                           name="address"
-                           placeholder="123 Main Street"
-                           required>
-
-                </div>
-
-
-
-
-                <div class="form-group">
-
-                    <label>
-                        Project Type *
-                    </label>
-
-
-                    <select name="project_type">
-
-                        <option>
-                            Select project type
-                        </option>
-
-                        <option>
-                            Basement Renovation
-                        </option>
-
-                        <option>
-                            Kitchen Renovation
-                        </option>
-
-                        <option>
-                            Bathroom Renovation
-                        </option>
-
-                        <option>
-                            Full Home Renovation
-                        </option>
-
-                        <option>
-                            Other
-                        </option>
-
-                    </select>
-
-
-                </div>
-
-
-
-
-                <div class="form-group">
-
-                    <label>
-                        Estimated Budget
-                    </label>
-
-
-                    <select name="budget">
-
-                        <option>
-                            Select budget range
-                        </option>
-
-                        <option>
-                            Under $10,000
-                        </option>
-
-                        <option>
-                            $10,000 - $25,000
-                        </option>
-
-                        <option>
-                            $25,000 - $50,000
-                        </option>
-
-                        <option>
-                            $50,000+
-                        </option>
-
-                    </select>
-
-
-                </div>
-
-
-
-
-
-                <div class="form-group full">
-
-
-                    <label>
-                        Describe Your Project
-                    </label>
-
-
-                    <textarea name="description"
-                              rows="6"
-                              placeholder="Tell us about your renovation ideas..."></textarea>
-
-
-                </div>
-
-
-
-
-
-                <div class="form-group full">
-
-                    <label>
-                        Upload Photos Or Plans
-                    </label>
-
-
-                    <input type="file"
-                           name="photos"
-                           multiple
-                           accept="image/*,.pdf">
-
-
-                </div>
-
-
-
-            </div>
-
-
-
-            <button type="submit">
-
-                Request Free Quote
-
-            </button>
-
-
-
-        </form>
+      action="{% url 'web:quote_request' %}"
+      enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+    <h2>Request Your Free Quote</h2>
+
+    <p class="form-description">
+        Tell us about your renovation project and
+        we will contact you to discuss the next steps.
+    </p>
+
+    {% if form_errors %}
+        <div class="form-alert">
+            Please fix the errors below and try again.
+        </div>
+    {% endif %}
+
+    <div class="form-grid">
+
+        <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text"
+                   name="full_name"
+                   placeholder="Joe Smith"
+                   value="{{ form_data.full_name|default:'' }}"
+                   required>
+            {% if form_errors.full_name %}
+                <span class="field-error">{{ form_errors.full_name.0 }}</span>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel"
+                   name="phone"
+                   placeholder="(555) 123-4567"
+                   value="{{ form_data.phone|default:'' }}"
+                   required>
+            {% if form_errors.phone %}
+                <span class="field-error">{{ form_errors.phone.0 }}</span>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email"
+                   name="email"
+                   placeholder="joe@email.com"
+                   value="{{ form_data.email|default:'' }}"
+                   required>
+            {% if form_errors.email %}
+                <span class="field-error">{{ form_errors.email.0 }}</span>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label>City *</label>
+            <input type="text"
+                   name="city"
+                   placeholder="Ottawa"
+                   value="{{ form_data.city|default:'' }}"
+                   required>
+            {% if form_errors.city %}
+                <span class="field-error">{{ form_errors.city.0 }}</span>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label>Postal Code *</label>
+            <input type="text"
+                   name="postal_code"
+                   placeholder="K1A 0A6"
+                   value="{{ form_data.postal_code|default:'' }}"
+                   required>
+            {% if form_errors.postal_code %}
+                <span class="field-error">{{ form_errors.postal_code.0 }}</span>
+            {% endif %}
+        </div>
+
+        <div class="form-group full">
+            <label>Project Address *</label>
+            <input type="text"
+                   name="address"
+                   placeholder="123 Main Street"
+                   value="{{ form_data.address|default:'' }}"
+                   required>
+            {% if form_errors.address %}
+                <span class="field-error">{{ form_errors.address.0 }}</span>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label>Project Type *</label>
+            <select name="project_type" required>
+                <option value="" disabled {% if not form_data.project_type %}selected{% endif %}>Select project type</option>
+                <option value="Basement Renovation" {% if form_data.project_type == "Basement Renovation" %}selected{% endif %}>Basement Renovation</option>
+                <option value="Kitchen Renovation" {% if form_data.project_type == "Kitchen Renovation" %}selected{% endif %}>Kitchen Renovation</option>
+                <option value="Bathroom Renovation" {% if form_data.project_type == "Bathroom Renovation" %}selected{% endif %}>Bathroom Renovation</option>
+                <option value="Flooring" {% if form_data.project_type == "Flooring" %}selected{% endif %}>Flooring</option>
+                <option value="Painting" {% if form_data.project_type == "Painting" %}selected{% endif %}>Painting</option>
+                <option value="Home Addition" {% if form_data.project_type == "Home Addition" %}selected{% endif %}>Home Addition</option>
+                <option value="Full Home Renovation" {% if form_data.project_type == "Full Home Renovation" %}selected{% endif %}>Full Home Renovation</option>
+                <option value="Other" {% if form_data.project_type == "Other" %}selected{% endif %}>Other</option>
+            </select>
+            {% if form_errors.project_type %}
+                <span class="field-error">{{ form_errors.project_type.0 }}</span>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label>Basement Status</label>
+            <select name="basement_status">
+                <option value="" {% if not form_data.basement_status %}selected{% endif %}>Not Applicable</option>
+                <option value="Unfinished Basement" {% if form_data.basement_status == "Unfinished Basement" %}selected{% endif %}>Unfinished Basement</option>
+                <option value="Partially Finished Basement" {% if form_data.basement_status == "Partially Finished Basement" %}selected{% endif %}>Partially Finished Basement</option>
+                <option value="Finished Basement Remodel" {% if form_data.basement_status == "Finished Basement Remodel" %}selected{% endif %}>Finished Basement Remodel</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Estimated Budget</label>
+            <select name="budget">
+                <option value="" {% if not form_data.budget %}selected{% endif %}>Select budget range</option>
+                <option value="Under $10,000" {% if form_data.budget == "Under $10,000" %}selected{% endif %}>Under $10,000</option>
+                <option value="$10,000 - $25,000" {% if form_data.budget == "$10,000 - $25,000" %}selected{% endif %}>$10,000 - $25,000</option>
+                <option value="$25,000 - $50,000" {% if form_data.budget == "$25,000 - $50,000" %}selected{% endif %}>$25,000 - $50,000</option>
+                <option value="$50,000 - $100,000" {% if form_data.budget == "$50,000 - $100,000" %}selected{% endif %}>$50,000 - $100,000</option>
+                <option value="$100,000+" {% if form_data.budget == "$100,000+" %}selected{% endif %}>$100,000+</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Timeline</label>
+            <select name="timeline">
+                <option value="" {% if not form_data.timeline %}selected{% endif %}>Select timeline</option>
+                <option value="ASAP" {% if form_data.timeline == "ASAP" %}selected{% endif %}>ASAP</option>
+                <option value="Within 1 Month" {% if form_data.timeline == "Within 1 Month" %}selected{% endif %}>Within 1 Month</option>
+                <option value="1-3 Months" {% if form_data.timeline == "1-3 Months" %}selected{% endif %}>1-3 Months</option>
+                <option value="3-6 Months" {% if form_data.timeline == "3-6 Months" %}selected{% endif %}>3-6 Months</option>
+                <option value="Just Planning" {% if form_data.timeline == "Just Planning" %}selected{% endif %}>Just Planning</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Preferred Contact Method</label>
+            <select name="contact_method">
+                <option value="Phone" {% if form_data.contact_method == "Phone" or not form_data.contact_method %}selected{% endif %}>Phone</option>
+                <option value="Email" {% if form_data.contact_method == "Email" %}selected{% endif %}>Email</option>
+                <option value="Text Message" {% if form_data.contact_method == "Text Message" %}selected{% endif %}>Text Message</option>
+            </select>
+        </div>
+
+        <div class="form-group full">
+            <label>Describe Your Project *</label>
+            <textarea name="description"
+                      rows="6"
+                      placeholder="Tell us about your renovation ideas..."
+                      required>{{ form_data.description|default:'' }}</textarea>
+            {% if form_errors.description %}
+                <span class="field-error">{{ form_errors.description.0 }}</span>
+            {% endif %}
+        </div>
+
+        <div class="form-group full">
+            <label>Upload Photos Or Plans</label>
+            <input type="file"
+                   name="photos"
+                   multiple
+                   accept="image/*,.pdf">
+        </div>
+
+    </div>
+
+    <button type="submit">Request Free Quote</button>
+
+</form>
 
 
     </div>

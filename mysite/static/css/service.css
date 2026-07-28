@@ -1,28 +1,64 @@
 /* ===========================================================
    RenoVision — Service page styles (basement, kitchen, etc.)
    Save as static/css/service.css and link it on every service page.
-   Reuses the same tokens as index.css — keep them in sync:
-     --charcoal #1C1E22   --concrete #EDE8DD
-     --copper   #B5652D   --slate    #3D4E5C
-     --line     #D8D2C4
+   Reuses the same tokens as index.css — keep them in sync.
    =========================================================== */
 
 :root {
+    /* Brand */
     --charcoal: #1C1E22;
     --concrete: #EDE8DD;
-    --copper: #B5652D;
-    --slate: #3D4E5C;
-    --line: #D8D2C4;
+    --copper:   #B5652D;
+    --copper-dark: #8F4E20;
+    --slate:    #3D4E5C;
+    --line:     #D8D2C4;
+
+    /* Derived tones (built from the brand colors above, not new hues) */
+    --ink-soft:   #4A4640;   /* body copy on --concrete */
+    --ink-faint:  #8A8377;   /* captions, meta */
+    --panel:      #FFFFFF;
+
+    /* Rhythm */
+    --gutter: 6vw;
+    --radius: 3px;
+    --shadow-sm: 0 6px 16px rgba(28,30,34,0.08);
+    --shadow-md: 0 14px 30px rgba(28,30,34,0.14);
+    --ease: 0.2s cubic-bezier(.4,0,.2,1);
 }
+
+*, *::before, *::after { box-sizing: border-box; }
 
 body {
     margin: 0;
     background: var(--concrete);
     color: var(--charcoal);
     font-family: 'Work Sans', sans-serif;
-    line-height: 2.5;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
 }
-h1, h2, h3 { font-family: 'Zilla Slab', serif; font-weight: 600; margin: 0; line-height: 1.15; }
+
+h1, h2, h3 {
+    font-family: 'Zilla Slab', serif;
+    font-weight: 600;
+    line-height: 1.15;
+    margin: 0;
+}
+
+a { color: inherit; }
+
+img { display: block; max-width: 100%; }
+
+/* Consistent, visible keyboard focus everywhere */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--copper);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
 .eyebrow {
     font-size: 0.8rem;
     font-weight: 600;
@@ -31,26 +67,40 @@ h1, h2, h3 { font-family: 'Zilla Slab', serif; font-weight: 600; margin: 0; line
     color: var(--copper);
     margin: 0 0 0.75rem;
 }
+
+/* ---------- Buttons ---------- */
 .btn {
     display: inline-block;
     padding: 0.85rem 1.75rem;
     border-radius: 2px;
     font-weight: 600;
-    text-decoration: none;
     font-size: 0.95rem;
-    transition: transform 0.15s ease, background 0.15s ease;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform var(--ease), background var(--ease), border-color var(--ease);
 }
 .btn-primary { background: var(--copper); color: #fff; }
-.btn-primary:hover { background: #9c5426; transform: translateY(-1px); }
+.btn-primary:hover { background: var(--copper-dark); transform: translateY(-1px); }
+.btn-secondary {
+    background: transparent;
+    color: var(--charcoal);
+    border-color: var(--line);
+}
+.btn-secondary:hover {
+    border-color: var(--copper);
+    color: var(--copper);
+    transform: translateY(-1px);
+}
 
 .section-heading {
     max-width: 640px;
     margin: 0 auto 3rem;
+    padding: 0 var(--gutter);
     text-align: center;
-    padding: 0 6vw;
 }
 .section-heading h2 { font-size: clamp(1.7rem, 3vw, 2.2rem); }
-.section-sub { color: #55504a; margin-top: 0.75rem; }
+.section-sub { color: var(--ink-faint); margin-top: 0.75rem; }
 
 /* ---------- Hero Slideshow ---------- */
 
@@ -84,33 +134,32 @@ h1, h2, h3 { font-family: 'Zilla Slab', serif; font-weight: 600; margin: 0; line
 
 .hero-content {
     position: absolute;
-    left: clamp(20px,6vw,80px);
+    left: clamp(20px, 6vw, 80px);
     right: 20px;
-    bottom: clamp(40px,7vw,80px);
-
+    bottom: clamp(40px, 7vw, 80px);
     z-index: 2;
     max-width: 700px;
 }
 
 .breadcrumb {
-    font-size: .85rem;
-    color: rgba(237,232,221,.8);
-    margin-bottom: .75rem;
+    font-size: 0.85rem;
+    color: rgba(237,232,221,0.8);
+    margin: 0 0 0.75rem;
 }
-
 .breadcrumb a {
     color: inherit;
     text-decoration: none;
 }
+.breadcrumb a:hover { text-decoration: underline; }
 
 .hero-content h1 {
-    font-size: clamp(2.2rem,5vw,3.8rem);
-    margin-bottom: 1rem;
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+    margin-bottom: 0.9rem;
 }
 
 .hero-sub {
     max-width: 50ch;
-    font-size: clamp(.95rem,2vw,1.1rem);
+    font-size: clamp(0.98rem, 1.6vw, 1.1rem);
     color: rgba(237,232,221,.9);
     margin-bottom: 1.75rem;
 }
@@ -122,33 +171,28 @@ h1, h2, h3 { font-family: 'Zilla Slab', serif; font-weight: 600; margin: 0; line
     transform: translateY(-50%);
     width: 52px;
     height: 52px;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
     border-radius: 50%;
-
     background: rgba(0,0,0,.45);
     color: #fff;
-
     font-size: 34px;
     cursor: pointer;
-    z-index: 5;
-
-    transition: .25s;
+    transition: background var(--ease), transform var(--ease);
 }
 
-.next-arrow:hover {
-    background: rgba(0,0,0,.75);
-}
+.next-arrow:hover { background: rgba(0,0,0,.75); }
+.next-arrow:active { transform: translateY(-50%) scale(0.94); }
 
 .slide-dots {
     position: absolute;
     bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
-
     display: flex;
     gap: 10px;
-
     z-index: 5;
 }
 
@@ -158,80 +202,62 @@ h1, h2, h3 { font-family: 'Zilla Slab', serif; font-weight: 600; margin: 0; line
     border-radius: 50%;
     background: rgba(255,255,255,.45);
     cursor: pointer;
-    transition: .25s;
+    transition: background var(--ease), transform var(--ease);
 }
-
-.dot.active {
-    background: var(--copper);
-}
-
-.hero-content {
-    position: absolute;
-    z-index: 1;
-    bottom: 60px;
-    left: 6vw;
-    max-width: 640px;
-}
-.breadcrumb {
-    font-size: 0.85rem;
-    color: rgba(237,232,221,0.8);
-    margin: 0 0 0.75rem;
-}
-.breadcrumb a { color: rgba(237,232,221,0.8); }
-.hero-content h1 {
-    font-size: clamp(2.2rem, 4.5vw, 3.2rem);
-    margin-bottom: 0.9rem;
-}
-.hero-sub {
-    font-size: 1.05rem;
-    color: rgba(237,232,221,0.9);
-    max-width: 50ch;
-    margin-bottom: 1.5rem;
-}
+.dot:hover { background: rgba(255,255,255,.7); }
+.dot.active { background: var(--copper); transform: scale(1.15); }
 
 /* ---------- Overview ---------- */
 .overview {
     max-width: 760px;
     margin: 5rem auto;
-    padding: 0 6vw;
+    padding: 0 var(--gutter);
     text-align: center;
 }
 .overview h2 { font-size: clamp(1.7rem, 3vw, 2.2rem); margin-bottom: 1rem; }
-.overview p { color: #45403a; font-size: 1.05rem; }
+.overview p { color: var(--ink-soft); font-size: 1.05rem; }
 
 /* ---------- Scope ---------- */
-.scope { padding: 5rem 0; background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.scope {
+    padding: 5rem 0;
+    background: var(--panel);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
 .scope-grid {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0 6vw;
+    padding: 0 var(--gutter);
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 2rem;
 }
+.scope-item { padding-left: 1.1rem; border-left: 2px solid var(--line); }
 .scope-item h3 { font-size: 1.05rem; margin-bottom: 0.5rem; color: var(--slate); }
-.scope-item p { margin: 0; color: #55504a; font-size: 0.93rem; }
+.scope-item p { margin: 0; color: var(--ink-soft); font-size: 0.93rem; }
 
 /* ---------- Gallery ---------- */
 .gallery { padding: 5rem 0; }
 .gallery-grid {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0 6vw;
+    padding: 0 var(--gutter);
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1rem;
 }
+.gallery-grid figure { margin: 0; overflow: hidden; border-radius: var(--radius); }
 .gallery-grid img {
     width: 100%;
     height: 220px;
     object-fit: cover;
-    border-radius: 2px;
+    transition: transform 0.4s var(--ease);
 }
+.gallery-grid figure:hover img { transform: scale(1.05); }
 .gallery-note {
     text-align: center;
     font-size: 0.85rem;
-    color: #8a8377;
+    color: var(--ink-faint);
     max-width: 500px;
     margin: 1.5rem auto 0;
     font-style: italic;
@@ -243,7 +269,7 @@ h1, h2, h3 { font-family: 'Zilla Slab', serif; font-weight: 600; margin: 0; line
 .why-grid {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0 6vw;
+    padding: 0 var(--gutter);
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 2.5rem;
@@ -262,27 +288,58 @@ h1, h2, h3 { font-family: 'Zilla Slab', serif; font-weight: 600; margin: 0; line
 .quote-section {
     max-width: 1100px;
     margin: 5rem auto;
-    padding: 0 6vw;
+    padding: 0 var(--gutter);
     display: grid;
     grid-template-columns: 1fr 1.2fr;
     gap: 3rem;
     align-items: start;
 }
 .quote-intro h2 { font-size: clamp(1.7rem, 3vw, 2.2rem); margin-bottom: 0.75rem; }
-.quote-intro p { color: #55504a; }
+.quote-intro p { color: var(--ink-soft); }
+
 .quote-form {
-    background: #fff;
+    background: var(--panel);
     border: 1px solid var(--line);
-    border-radius: 3px;
+    border-radius: var(--radius);
     padding: 2rem;
+    box-shadow: var(--shadow-sm);
 }
+.quote-form .field { margin-bottom: 1.25rem; }
+.quote-form label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--slate);
+    margin-bottom: 0.4rem;
+}
+.quote-form input,
+.quote-form select,
+.quote-form textarea {
+    width: 100%;
+    padding: 0.7rem 0.85rem;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--charcoal);
+    background: var(--concrete);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    transition: border-color var(--ease);
+}
+.quote-form input:focus,
+.quote-form select:focus,
+.quote-form textarea:focus {
+    border-color: var(--copper);
+    outline: none;
+}
+.quote-form textarea { resize: vertical; min-height: 110px; }
+.quote-form .btn { width: 100%; text-align: center; }
 
 /* ---------- Related services ---------- */
-.related { padding: 5rem 0 6rem; background: #fff; border-top: 1px solid var(--line); }
+.related { padding: 5rem 0 6rem; background: var(--panel); border-top: 1px solid var(--line); }
 .related-grid {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 0 6vw;
+    padding: 0 var(--gutter);
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1.5rem;
@@ -291,91 +348,55 @@ h1, h2, h3 { font-family: 'Zilla Slab', serif; font-weight: 600; margin: 0; line
     display: block;
     text-decoration: none;
     color: var(--charcoal);
-    border-radius: 3px;
+    border-radius: var(--radius);
     overflow: hidden;
     border: 1px solid var(--line);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: var(--panel);
+    transition: transform var(--ease), box-shadow var(--ease), border-color var(--ease);
 }
-.related-card:hover { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(28,30,34,0.12); }
-.related-card img { width: 100%; height: 150px; object-fit: cover; display: block; }
+.related-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--line);
+}
+.related-card img { width: 100%; height: 150px; object-fit: cover; }
 .related-card h3 { font-size: 1rem; padding: 0.9rem 1.1rem; }
 
 /* ---------- Responsive ---------- */
 
 @media (max-width: 992px) {
-
-    #slideshow {
-        min-height: 75vh;
-    }
-
-    .hero-content {
-        max-width: 600px;
-    }
-
+    #slideshow { min-height: 75vh; }
+    .hero-content { max-width: 600px; }
+    .quote-section { grid-template-columns: 1fr; gap: 2.5rem; }
 }
 
 @media (max-width: 768px) {
+    #slideshow { min-height: 600px; }
 
-    #slideshow {
-        min-height: 600px;
-    }
+    .hero-content { left: 30px; right: 30px; bottom: 40px; }
+    .hero-content h1 { font-size: 2.4rem; }
+    .hero-sub { font-size: 1rem; }
 
-    .hero-content {
-        left: 30px;
-        right: 30px;
-        bottom: 40px;
-    }
-
-    .hero-content h1 {
-        font-size: 2.4rem;
-    }
-
-    .hero-sub {
-        font-size: 1rem;
-    }
-
-    .next-arrow {
-        width: 46px;
-        height: 46px;
-        font-size: 28px;
-    }
-
+    .next-arrow { width: 46px; height: 46px; font-size: 28px; }
 }
 
 @media (max-width: 576px) {
+    #slideshow { min-height: 520px; }
 
-    #slideshow {
-        min-height: 520px;
+    .hero-content { left: 20px; right: 20px; bottom: 30px; }
+    .hero-content h1 { font-size: 2rem; }
+    .hero-sub { font-size: .95rem; margin-bottom: 1.5rem; }
+
+    .breadcrumb { font-size: .75rem; }
+    .next-arrow { width: 40px; height: 40px; font-size: 24px; right: 12px; }
+    .slide-dots { bottom: 15px; }
+
+    .quote-form { padding: 1.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition-duration: 0.001ms !important;
+        animation-duration: 0.001ms !important;
     }
-
-    .hero-content {
-        left: 20px;
-        right: 20px;
-        bottom: 30px;
-    }
-
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-
-    .hero-sub {
-        font-size: .95rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .breadcrumb {
-        font-size: .75rem;
-    }
-
-    .next-arrow {
-        width: 40px;
-        height: 40px;
-        font-size: 24px;
-        right: 12px;
-    }
-
-    .slide-dots {
-        bottom: 15px;
-    }
-
 }
