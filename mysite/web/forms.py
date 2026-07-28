@@ -50,12 +50,3 @@ class QuoteRequestForm(forms.ModelForm):
         postal = postal.replace(" ", "")
         postal = f"{postal[:3]} {postal[3:]}"
         return postal
-    
-    def clean(self):
-        cleaned_data = super().clean()
-        project_type = cleaned_data.get("project_type")
-        basement_type = cleaned_data.get("basement_type", "")
-        
-        if project_type == "Basement Renovation" and not basement_type:
-            self.add_error("basement_status", "please specify the current basement status for this project type.")
-        return cleaned_data

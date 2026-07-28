@@ -44,10 +44,11 @@
 
 
         <form method="post"
-              action="/quote-request/"
+              action="{% url 'web:quote_request' %}"
               enctype="multipart/form-data">
 
-
+            {% csrf_token %}
+            
             <h2>
                 Request Your Free Quote
             </h2>
