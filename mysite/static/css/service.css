@@ -35,6 +35,7 @@ body {
     font-family: 'Work Sans', sans-serif;
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
+    padding-top:6.6%;
 }
 
 h1, h2, h3 {
