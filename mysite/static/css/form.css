@@ -91,41 +91,21 @@ p {
 
 
 .quote-hero {
+    min-height: 25%;
+    display: flex;
+    align-items: center;
 
-
-    min-height:25%;
-
-
-    display:flex;
-
-    align-items:center;
-
-
-
-    background:
-
-
-    linear-gradient(
-
+    background: linear-gradient(
         0deg,
+        rgba(28, 30, 34, .92),
+        rgba(28, 30, 34, .75)
+    ), 
+    linear-gradient(135deg, #2a2d33, #1c1e22); /* stand-in for the missing image */
 
-        rgba(28,30,34,.92),
+    background-size: cover;
+    background-position: center;
 
-        rgba(28,30,34,.75)
-
-    ),
-
-    url('../resources/basement.jpg');
-
-
-
-    background-size:cover;
-
-    background-position:center;
-
-
-    color:var(--concrete);
-
+    color: var(--concrete);
 }
 
 
