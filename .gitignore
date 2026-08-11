@@ -45,3 +45,6 @@ Thumbs.db
 # Migrations (optional - usually DO NOT ignore)
 # */migrations/*
 # !*/migrations/__init__.py
+# Django collected static files
+staticfiles/
+mysite/staticfiles/
