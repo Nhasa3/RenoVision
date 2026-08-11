@@ -113,7 +113,33 @@
             gap:25px;
 
         }
+        .gallery-grid:empty{
 
+            display:block;
+
+            text-align:center;
+
+            padding:80px 20px;
+
+            border:1px dashed #ccc;
+
+            border-radius:14px;
+
+            background:#fff;
+
+        }
+
+        .gallery-grid:empty::after{
+
+            content:"No images have been added to the gallery yet. Please check back soon.";
+
+            color:#777;
+
+            font-size:1.05rem;
+
+            line-height:1.7;
+
+        }
         .gallery-item{
 
             overflow:hidden;
@@ -235,6 +261,7 @@
 
         <div class="gallery-grid">
 
+            
             {% for gallery in galleries %}
                 {% for photo in gallery.photos.all %}
 
