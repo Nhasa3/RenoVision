@@ -2,6 +2,5 @@
 builder = "NIXPACKS"
 
 [deploy]
-startCommand = "python manage.py migrate && python manage.py create_admin && python manage.py collectstatic --noinput && gunicorn mysite.wsgi"
-restartPolicyType = "ON_FAILURE"
+startCommand = "python -c \"import socket; print(socket.create_connection(('smtp.gmail.com', 587), 10))\""restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 10
