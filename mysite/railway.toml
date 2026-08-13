@@ -2,6 +2,6 @@
 builder = "NIXPACKS"
 
 [deploy]
-startCommand = "python manage.py migrate && python manage.py migrate web && python manage.py collectstatic --noinput && gunicorn mysite.wsgi"
+startCommand = "python manage.py migrate && python manage.py create_admin && python manage.py collectstatic --noinput && gunicorn mysite.wsgi"
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 10
