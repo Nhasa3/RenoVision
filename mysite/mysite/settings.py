@@ -30,7 +30,10 @@ SECRET_KEY = 'django-insecure-92w%8a9sbf!k9tgq^aexc+xc#4j^o8n=^7_19up0xe0-8nr-bv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['renovision-production-f000.up.railway.app']
+CSRF_TRUSTED_ORIGINS = [
+    "https://renovision-production-f000.up.railway.app",
+]
 
 
 # Application definition
